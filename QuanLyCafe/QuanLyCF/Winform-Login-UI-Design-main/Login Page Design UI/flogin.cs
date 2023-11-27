@@ -18,7 +18,7 @@ namespace Login_Page_Design_UI
         {
            
             InitializeComponent();
-            this.StartPosition=FormStartPosition.CenterScreen;
+            
             if (Properties.Settings.Default.RememberMe)
             {
                 txtEmail.Text = Properties.Settings.Default.Username;
