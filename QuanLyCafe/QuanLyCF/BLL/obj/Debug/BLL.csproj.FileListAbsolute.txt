@@ -1,0 +1,7 @@
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.pdb
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb
+F:\Ki 7\Ung dung thong minh\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll.config

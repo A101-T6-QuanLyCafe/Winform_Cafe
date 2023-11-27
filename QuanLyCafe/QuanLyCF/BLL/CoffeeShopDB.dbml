@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CoffeeShopDB" Class="CoffeeShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FMAJ644;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EmployeePermissions" Member="EmployeePermissions">
+    <Type Name="EmployeePermission">
+      <Column Name="EmployeePermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employee_EmployeePermission" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+      <Association Name="Permission_EmployeePermission" Member="Permission" ThisKey="PermissionID" OtherKey="PermissionID" Type="Permission" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.typeProduct" Member="typeProducts">
+    <Type Name="typeProduct">
+      <Column Name="typeProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typeProductName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="typeProduct_Product" Member="Products" ThisKey="typeProductID" OtherKey="typeProductID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Employee_EmployeePermission" Member="EmployeePermissions" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="EmployeePermission" />
+      <Association Name="Employee_Order" Member="Orders" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incomings" Member="Incomings">
+    <Type Name="Incoming">
+      <Column Name="IncomingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IncomingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="total_Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="amount_paid" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Incoming_Incomings_Detail" Member="Incomings_Details" ThisKey="IncomingID" OtherKey="IncomingID" Type="Incomings_Detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Incomings_Detail" Member="Incomings_Details">
+    <Type Name="Incomings_Detail">
+      <Column Name="Incomings_Detail_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IncomingID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Materials_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Incoming_Incomings_Detail" Member="Incoming" ThisKey="IncomingID" OtherKey="IncomingID" Type="Incoming" IsForeignKey="true" />
+      <Association Name="material_Incomings_Detail" Member="material" ThisKey="Materials_ID" OtherKey="Materials_ID" Type="material" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.materials" Member="materials">
+    <Type Name="material">
+      <Column Name="Materials_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Materials_Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="supplieriD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="material_Incomings_Detail" Member="Incomings_Details" ThisKey="Materials_ID" OtherKey="Materials_ID" Type="Incomings_Detail" />
+      <Association Name="supplier_material" Member="supplier" ThisKey="supplieriD" OtherKey="supplierID" Type="supplier" IsForeignKey="true" />
+      <Association Name="TypeMaterial_material" Member="TypeMaterial" ThisKey="TypeID" OtherKey="TypeID" Type="TypeMaterial" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderDetails" Member="OrderDetails">
+    <Type Name="OrderDetail">
+      <Column Name="OrderDetailID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Order_OrderDetail" Member="Order" ThisKey="OrderID" OtherKey="OrderID" Type="Order" IsForeignKey="true" />
+      <Association Name="Product_OrderDetail" Member="Product" ThisKey="ProductID" OtherKey="ProductID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TablesID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Order_OrderDetail" Member="OrderDetails" ThisKey="OrderID" OtherKey="OrderID" Type="OrderDetail" />
+      <Association Name="Employee_Order" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+      <Association Name="tablesT_Order" Member="tablesT" ThisKey="TablesID" OtherKey="TableID" Type="tablesT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Permissions" Member="Permissions">
+    <Type Name="Permission">
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PermissionName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Permission_EmployeePermission" Member="EmployeePermissions" ThisKey="PermissionID" OtherKey="PermissionID" Type="EmployeePermission" />
+      <Association Name="Permission_PermissionScreen" Member="PermissionScreens" ThisKey="PermissionID" OtherKey="PermissionID" Type="PermissionScreen" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PermissionScreens" Member="PermissionScreens">
+    <Type Name="PermissionScreen">
+      <Column Name="PermissionScreenID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ScreenID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Permission_PermissionScreen" Member="Permission" ThisKey="PermissionID" OtherKey="PermissionID" Type="Permission" IsForeignKey="true" />
+      <Association Name="Screen_PermissionScreen" Member="Screen" ThisKey="ScreenID" OtherKey="ScreenID" Type="Screen" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="typeProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductID" OtherKey="ProductID" Type="OrderDetail" />
+      <Association Name="typeProduct_Product" Member="typeProduct" ThisKey="typeProductID" OtherKey="typeProductID" Type="typeProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Screens" Member="Screens">
+    <Type Name="Screen">
+      <Column Name="ScreenID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ScreenName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Screen_PermissionScreen" Member="PermissionScreens" ThisKey="ScreenID" OtherKey="ScreenID" Type="PermissionScreen" />
+    </Type>
+  </Table>
+  <Table Name="dbo.supplier" Member="suppliers">
+    <Type Name="supplier">
+      <Column Name="supplierID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="suplierName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="supplier_material" Member="materials" ThisKey="supplierID" OtherKey="supplieriD" Type="material" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tablesT" Member="tablesTs">
+    <Type Name="tablesT">
+      <Column Name="TableID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tablesT_Order" Member="Orders" ThisKey="TableID" OtherKey="TablesID" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeMaterials" Member="TypeMaterials">
+    <Type Name="TypeMaterial">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="TypeMaterial_material" Member="materials" ThisKey="TypeID" OtherKey="TypeID" Type="material" />
+    </Type>
+  </Table>
+</Database>
