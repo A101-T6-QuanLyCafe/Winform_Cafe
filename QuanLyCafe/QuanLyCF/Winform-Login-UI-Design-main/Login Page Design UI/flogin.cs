@@ -64,6 +64,7 @@ namespace Login_Page_Design_UI
                 {
                     // Đăng nhập thất bại
                     MessageBox.Show("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.");
+                    txtEmail.Focus();
                 }
             
         }
