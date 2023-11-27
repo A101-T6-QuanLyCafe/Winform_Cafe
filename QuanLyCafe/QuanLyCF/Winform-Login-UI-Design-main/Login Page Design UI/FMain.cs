@@ -22,5 +22,11 @@ namespace Login_Page_Design_UI
         {
 
         }
+
+        private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fAccount fr = new fAccount();
+            fr.ShowDialog();
+        }
     }
 }

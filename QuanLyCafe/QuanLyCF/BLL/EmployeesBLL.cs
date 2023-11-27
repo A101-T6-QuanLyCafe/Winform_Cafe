@@ -77,5 +77,52 @@ namespace BLL
                 return false;
             }
         }
+        public bool Update2(Employee EUpdate)
+        {
+            var updateItem = db.Employees.SingleOrDefault(x => x.Email == EUpdate.Email);
+            if (updateItem != null)
+            {
+                try
+                {
+                    
+
+                    updateItem.FirstName = EUpdate.FirstName;
+                    updateItem.LastName = EUpdate.LastName;
+                    updateItem.Password = EUpdate.Password;
+                    db.SubmitChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public int GetEmployeeIDByEmail(string email)
+        {
+            
+            var employee = db.Employees.FirstOrDefault(e => e.Email == email);
+
+            if (employee != null)
+            {
+                return employee.EmployeeID;
+            }
+            else
+            {
+                
+                return -1;// khong tim thay
+            }
+        }
+        public Employee GetEmployeeByEmail(string email)
+        {
+           
+            var employee = db.Employees.FirstOrDefault(e => e.Email==email);
+
+            return employee;
+        }
     }
 }
