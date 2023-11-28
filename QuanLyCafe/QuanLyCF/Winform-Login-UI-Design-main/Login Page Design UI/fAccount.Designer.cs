@@ -146,7 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 316);
+            this.ClientSize = new System.Drawing.Size(366, 279);
             this.Controls.Add(this.btnExits);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.txt_Re_PW);

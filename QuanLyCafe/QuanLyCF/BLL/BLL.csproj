@@ -48,6 +48,9 @@
       <DependentUpon>CoffeeShopDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="EmployeesBLL.cs" />
+    <Compile Include="IncomingsBLL.cs" />
+    <Compile Include="IncomingsDetailBLL.cs" />
+    <Compile Include="MaterialsBLL.cs" />
     <Compile Include="OrdersBLL.cs" />
     <Compile Include="ProductsBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +59,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SupplierBLL.cs" />
+    <Compile Include="TypeMaterialsBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
