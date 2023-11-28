@@ -468,7 +468,7 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductName", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string typeProductName
 		{
 			get
@@ -546,16 +546,28 @@ namespace BLL
 		
 		private string _LastName;
 		
-		private string _Email;
+		private string _EMAIL;
 		
-		private string _Password;
+		private string _PHONE;
+		
+		private System.DateTime _DOB;
+		
+		private string _SEX;
+		
+		private string _USERNAME;
+		
+		private string _PASSWORD;
+		
+		private int _ISDELETE;
 		
 		private EntitySet<EmployeePermission> _EmployeePermissions;
 		
 		private EntitySet<Order> _Orders;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
+        private string id;
+        private string pass;
+
+        #region Extensibility Method Definitions
+        partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnEmployeeIDChanging(int value);
@@ -564,10 +576,20 @@ namespace BLL
     partial void OnFirstNameChanged();
     partial void OnLastNameChanging(string value);
     partial void OnLastNameChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
+    partial void OnEMAILChanging(string value);
+    partial void OnEMAILChanged();
+    partial void OnPHONEChanging(string value);
+    partial void OnPHONEChanged();
+    partial void OnDOBChanging(System.DateTime value);
+    partial void OnDOBChanged();
+    partial void OnSEXChanging(string value);
+    partial void OnSEXChanged();
+    partial void OnUSERNAMEChanging(string value);
+    partial void OnUSERNAMEChanged();
+    partial void OnPASSWORDChanging(string value);
+    partial void OnPASSWORDChanged();
+    partial void OnISDELETEChanging(int value);
+    partial void OnISDELETEChanged();
     #endregion
 		
 		public Employee()
@@ -577,12 +599,13 @@ namespace BLL
 			OnCreated();
 		}
 
-        public Employee(string firstname, string lastname, string email, string pass)
+        public Employee(int id, string firstname, string lastname, string email, string pass)
         {
+            EmployeeID = id;
             FirstName = firstname;
             LastName = lastname;
-            Email = email;
-            Password = pass;
+            EMAIL = email;
+            PASSWORD = pass;
         }
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
@@ -645,42 +668,142 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMAIL", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EMAIL
 		{
 			get
 			{
-				return this._Email;
+				return this._EMAIL;
 			}
 			set
 			{
-				if ((this._Email != value))
+				if ((this._EMAIL != value))
 				{
-					this.OnEmailChanging(value);
+					this.OnEMAILChanging(value);
 					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
+					this._EMAIL = value;
+					this.SendPropertyChanged("EMAIL");
+					this.OnEMAILChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50)")]
-		public string Password
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHONE", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string PHONE
 		{
 			get
 			{
-				return this._Password;
+				return this._PHONE;
 			}
 			set
 			{
-				if ((this._Password != value))
+				if ((this._PHONE != value))
 				{
-					this.OnPasswordChanging(value);
+					this.OnPHONEChanging(value);
 					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
+					this._PHONE = value;
+					this.SendPropertyChanged("PHONE");
+					this.OnPHONEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="DateTime NOT NULL")]
+		public System.DateTime DOB
+		{
+			get
+			{
+				return this._DOB;
+			}
+			set
+			{
+				if ((this._DOB != value))
+				{
+					this.OnDOBChanging(value);
+					this.SendPropertyChanging();
+					this._DOB = value;
+					this.SendPropertyChanged("DOB");
+					this.OnDOBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SEX", DbType="NVarChar(7) NOT NULL", CanBeNull=false)]
+		public string SEX
+		{
+			get
+			{
+				return this._SEX;
+			}
+			set
+			{
+				if ((this._SEX != value))
+				{
+					this.OnSEXChanging(value);
+					this.SendPropertyChanging();
+					this._SEX = value;
+					this.SendPropertyChanged("SEX");
+					this.OnSEXChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string USERNAME
+		{
+			get
+			{
+				return this._USERNAME;
+			}
+			set
+			{
+				if ((this._USERNAME != value))
+				{
+					this.OnUSERNAMEChanging(value);
+					this.SendPropertyChanging();
+					this._USERNAME = value;
+					this.SendPropertyChanged("USERNAME");
+					this.OnUSERNAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string PASSWORD
+		{
+			get
+			{
+				return this._PASSWORD;
+			}
+			set
+			{
+				if ((this._PASSWORD != value))
+				{
+					this.OnPASSWORDChanging(value);
+					this.SendPropertyChanging();
+					this._PASSWORD = value;
+					this.SendPropertyChanged("PASSWORD");
+					this.OnPASSWORDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISDELETE", DbType="Int NOT NULL")]
+		public int ISDELETE
+		{
+			get
+			{
+				return this._ISDELETE;
+			}
+			set
+			{
+				if ((this._ISDELETE != value))
+				{
+					this.OnISDELETEChanging(value);
+					this.SendPropertyChanging();
+					this._ISDELETE = value;
+					this.SendPropertyChanged("ISDELETE");
+					this.OnISDELETEChanged();
 				}
 			}
 		}
@@ -710,10 +833,8 @@ namespace BLL
 				this._Orders.Assign(value);
 			}
 		}
-
-        public string Pass { get; }
-
-        public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
@@ -1178,6 +1299,8 @@ namespace BLL
 		
 		private System.Nullable<int> _TypeID;
 		
+		private int _ISDELETE;
+		
 		private EntitySet<Incomings_Detail> _Incomings_Details;
 		
 		private EntityRef<supplier> _supplier;
@@ -1200,6 +1323,8 @@ namespace BLL
     partial void OnquantityChanged();
     partial void OnTypeIDChanging(System.Nullable<int> value);
     partial void OnTypeIDChanged();
+    partial void OnISDELETEChanging(int value);
+    partial void OnISDELETEChanged();
     #endregion
 		
 		public material()
@@ -1338,6 +1463,26 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISDELETE", DbType="Int NOT NULL")]
+		public int ISDELETE
+		{
+			get
+			{
+				return this._ISDELETE;
+			}
+			set
+			{
+				if ((this._ISDELETE != value))
+				{
+					this.OnISDELETEChanging(value);
+					this.SendPropertyChanging();
+					this._ISDELETE = value;
+					this.SendPropertyChanged("ISDELETE");
+					this.OnISDELETEChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="material_Incomings_Detail", Storage="_Incomings_Details", ThisKey="Materials_ID", OtherKey="Materials_ID")]
 		public EntitySet<Incomings_Detail> Incomings_Details
 		{
@@ -1460,11 +1605,13 @@ namespace BLL
 		
 		private int _OrderDetailID;
 		
-		private System.Nullable<int> _OrderID;
+		private int _OrderID;
 		
-		private System.Nullable<int> _ProductID;
+		private int _ProductID;
 		
-		private System.Nullable<int> _Quantity;
+		private int _Quantity;
+		
+		private float _Price;
 		
 		private EntityRef<Order> _Order;
 		
@@ -1476,12 +1623,14 @@ namespace BLL
     partial void OnCreated();
     partial void OnOrderDetailIDChanging(int value);
     partial void OnOrderDetailIDChanged();
-    partial void OnOrderIDChanging(System.Nullable<int> value);
+    partial void OnOrderIDChanging(int value);
     partial void OnOrderIDChanged();
-    partial void OnProductIDChanging(System.Nullable<int> value);
+    partial void OnProductIDChanging(int value);
     partial void OnProductIDChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanging(int value);
     partial void OnQuantityChanged();
+    partial void OnPriceChanging(float value);
+    partial void OnPriceChanged();
     #endregion
 		
 		public OrderDetail()
@@ -1511,8 +1660,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="Int")]
-		public System.Nullable<int> OrderID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="Int NOT NULL")]
+		public int OrderID
 		{
 			get
 			{
@@ -1535,8 +1684,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int")]
-		public System.Nullable<int> ProductID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int NOT NULL")]
+		public int ProductID
 		{
 			get
 			{
@@ -1559,8 +1708,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
 		{
 			get
 			{
@@ -1575,6 +1724,26 @@ namespace BLL
 					this._Quantity = value;
 					this.SendPropertyChanged("Quantity");
 					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Real NOT NULL")]
+		public float Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
 				}
 			}
 		}
@@ -1606,7 +1775,7 @@ namespace BLL
 					}
 					else
 					{
-						this._OrderID = default(Nullable<int>);
+						this._OrderID = default(int);
 					}
 					this.SendPropertyChanged("Order");
 				}
@@ -1640,7 +1809,7 @@ namespace BLL
 					}
 					else
 					{
-						this._ProductID = default(Nullable<int>);
+						this._ProductID = default(int);
 					}
 					this.SendPropertyChanged("Product");
 				}
@@ -1676,15 +1845,15 @@ namespace BLL
 		
 		private int _OrderID;
 		
-		private System.Nullable<System.DateTime> _OrderDate;
+		private System.DateTime _OrderDate;
 		
-		private System.Nullable<decimal> _TotalAmount;
+		private float _TotalAmount;
 		
-		private System.Nullable<int> _EmployeeID;
+		private int _EmployeeID;
 		
-		private System.Nullable<int> _TablesID;
+		private int _TablesID;
 		
-		private System.Nullable<int> _status;
+		private int _status;
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
@@ -1698,15 +1867,15 @@ namespace BLL
     partial void OnCreated();
     partial void OnOrderIDChanging(int value);
     partial void OnOrderIDChanged();
-    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOrderDateChanging(System.DateTime value);
     partial void OnOrderDateChanged();
-    partial void OnTotalAmountChanging(System.Nullable<decimal> value);
+    partial void OnTotalAmountChanging(float value);
     partial void OnTotalAmountChanged();
-    partial void OnEmployeeIDChanging(System.Nullable<int> value);
+    partial void OnEmployeeIDChanging(int value);
     partial void OnEmployeeIDChanged();
-    partial void OnTablesIDChanging(System.Nullable<int> value);
+    partial void OnTablesIDChanging(int value);
     partial void OnTablesIDChanged();
-    partial void OnstatusChanging(System.Nullable<int> value);
+    partial void OnstatusChanging(int value);
     partial void OnstatusChanged();
     #endregion
 		
@@ -1738,8 +1907,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> OrderDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime NOT NULL")]
+		public System.DateTime OrderDate
 		{
 			get
 			{
@@ -1758,8 +1927,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> TotalAmount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Real NOT NULL")]
+		public float TotalAmount
 		{
 			get
 			{
@@ -1778,8 +1947,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int")]
-		public System.Nullable<int> EmployeeID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
+		public int EmployeeID
 		{
 			get
 			{
@@ -1802,8 +1971,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TablesID", DbType="Int")]
-		public System.Nullable<int> TablesID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TablesID", DbType="Int NOT NULL")]
+		public int TablesID
 		{
 			get
 			{
@@ -1826,8 +1995,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int")]
-		public System.Nullable<int> status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int NOT NULL")]
+		public int status
 		{
 			get
 			{
@@ -1886,7 +2055,7 @@ namespace BLL
 					}
 					else
 					{
-						this._EmployeeID = default(Nullable<int>);
+						this._EmployeeID = default(int);
 					}
 					this.SendPropertyChanged("Employee");
 				}
@@ -1920,7 +2089,7 @@ namespace BLL
 					}
 					else
 					{
-						this._TablesID = default(Nullable<int>);
+						this._TablesID = default(int);
 					}
 					this.SendPropertyChanged("tablesT");
 				}
@@ -2304,9 +2473,11 @@ namespace BLL
 		
 		private string _ProductName;
 		
-		private System.Nullable<double> _Price;
+		private float _Price;
 		
-		private System.Nullable<int> _typeProductID;
+		private int _typeProductID;
+		
+		private int _ISDELETE;
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
@@ -2320,10 +2491,12 @@ namespace BLL
     partial void OnProductIDChanged();
     partial void OnProductNameChanging(string value);
     partial void OnProductNameChanged();
-    partial void OnPriceChanging(System.Nullable<double> value);
+    partial void OnPriceChanging(float value);
     partial void OnPriceChanged();
-    partial void OntypeProductIDChanging(System.Nullable<int> value);
+    partial void OntypeProductIDChanging(int value);
     partial void OntypeProductIDChanged();
+    partial void OnISDELETEChanging(int value);
+    partial void OnISDELETEChanged();
     #endregion
 		
 		public Product()
@@ -2353,7 +2526,7 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
 		public string ProductName
 		{
 			get
@@ -2373,8 +2546,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Float")]
-		public System.Nullable<double> Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Real NOT NULL")]
+		public float Price
 		{
 			get
 			{
@@ -2393,8 +2566,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductID", DbType="Int")]
-		public System.Nullable<int> typeProductID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductID", DbType="Int NOT NULL")]
+		public int typeProductID
 		{
 			get
 			{
@@ -2413,6 +2586,26 @@ namespace BLL
 					this._typeProductID = value;
 					this.SendPropertyChanged("typeProductID");
 					this.OntypeProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISDELETE", DbType="Int NOT NULL")]
+		public int ISDELETE
+		{
+			get
+			{
+				return this._ISDELETE;
+			}
+			set
+			{
+				if ((this._ISDELETE != value))
+				{
+					this.OnISDELETEChanging(value);
+					this.SendPropertyChanging();
+					this._ISDELETE = value;
+					this.SendPropertyChanged("ISDELETE");
+					this.OnISDELETEChanged();
 				}
 			}
 		}
@@ -2457,7 +2650,7 @@ namespace BLL
 					}
 					else
 					{
-						this._typeProductID = default(Nullable<int>);
+						this._typeProductID = default(int);
 					}
 					this.SendPropertyChanged("typeProduct");
 				}
@@ -2627,6 +2820,8 @@ namespace BLL
 		
 		private string _phone;
 		
+		private int _ISDELETE;
+		
 		private EntitySet<material> _materials;
 		
     #region Extensibility Method Definitions
@@ -2643,6 +2838,8 @@ namespace BLL
     partial void OnaddressChanged();
     partial void OnphoneChanging(string value);
     partial void OnphoneChanged();
+    partial void OnISDELETEChanging(int value);
+    partial void OnISDELETEChanged();
     #endregion
 		
 		public supplier()
@@ -2751,6 +2948,26 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISDELETE", DbType="Int NOT NULL")]
+		public int ISDELETE
+		{
+			get
+			{
+				return this._ISDELETE;
+			}
+			set
+			{
+				if ((this._ISDELETE != value))
+				{
+					this.OnISDELETEChanging(value);
+					this.SendPropertyChanging();
+					this._ISDELETE = value;
+					this.SendPropertyChanged("ISDELETE");
+					this.OnISDELETEChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="supplier_material", Storage="_materials", ThisKey="supplierID", OtherKey="supplieriD")]
 		public EntitySet<material> materials
 		{
@@ -2805,7 +3022,9 @@ namespace BLL
 		
 		private int _TableID;
 		
-		private System.Nullable<int> _status;
+		private int _ISDELETE;
+		
+		private int _status;
 		
 		private EntitySet<Order> _Orders;
 		
@@ -2815,7 +3034,9 @@ namespace BLL
     partial void OnCreated();
     partial void OnTableIDChanging(int value);
     partial void OnTableIDChanged();
-    partial void OnstatusChanging(System.Nullable<int> value);
+    partial void OnISDELETEChanging(int value);
+    partial void OnISDELETEChanged();
+    partial void OnstatusChanging(int value);
     partial void OnstatusChanged();
     #endregion
 		
@@ -2845,8 +3066,28 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int")]
-		public System.Nullable<int> status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISDELETE", DbType="Int NOT NULL")]
+		public int ISDELETE
+		{
+			get
+			{
+				return this._ISDELETE;
+			}
+			set
+			{
+				if ((this._ISDELETE != value))
+				{
+					this.OnISDELETEChanging(value);
+					this.SendPropertyChanging();
+					this._ISDELETE = value;
+					this.SendPropertyChanged("ISDELETE");
+					this.OnISDELETEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int NOT NULL")]
+		public int status
 		{
 			get
 			{
@@ -2921,6 +3162,8 @@ namespace BLL
 		
 		private string _TypeName;
 		
+		private int _ISDELETE;
+		
 		private EntitySet<material> _materials;
 		
     #region Extensibility Method Definitions
@@ -2931,6 +3174,8 @@ namespace BLL
     partial void OnTypeIDChanged();
     partial void OnTypeNameChanging(string value);
     partial void OnTypeNameChanged();
+    partial void OnISDELETEChanging(int value);
+    partial void OnISDELETEChanged();
     #endregion
 		
 		public TypeMaterial()
@@ -2975,6 +3220,26 @@ namespace BLL
 					this._TypeName = value;
 					this.SendPropertyChanged("TypeName");
 					this.OnTypeNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISDELETE", DbType="Int NOT NULL")]
+		public int ISDELETE
+		{
+			get
+			{
+				return this._ISDELETE;
+			}
+			set
+			{
+				if ((this._ISDELETE != value))
+				{
+					this.OnISDELETEChanging(value);
+					this.SendPropertyChanging();
+					this._ISDELETE = value;
+					this.SendPropertyChanged("ISDELETE");
+					this.OnISDELETEChanged();
 				}
 			}
 		}

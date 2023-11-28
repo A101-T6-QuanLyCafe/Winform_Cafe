@@ -31,12 +31,12 @@ namespace Login_Page_Design_UI
             }
             else
             {
-                string id = EmBLL.GetEmployeeIDByEmail(Properties.Settings.Default.Username).ToString();
+                int id = Int32.Parse(EmBLL.GetEmployeeIDByEmail(Properties.Settings.Default.Username).ToString());
                 string firstname = txtF_Name.Text;
                 string lastname = txtL_Name.Text;
                 string email = txtEmail.Text;
                 string pass = txt_Re_PW.Text;
-                Employee employee = new Employee(firstname,lastname,email,pass);
+                Employee employee = new Employee(id,firstname,lastname,email,pass);
                 if (EmBLL.Update2(employee))
                 {
                     MessageBox.Show("cập nhật thành công");
@@ -56,8 +56,8 @@ namespace Login_Page_Design_UI
             employee =EmBLL.GetEmployeeByEmail(Properties.Settings.Default.Username);
             txtF_Name.Text = employee.FirstName;
             txtL_Name.Text = employee.LastName;
-            txtEmail.Text=employee.Email;
-            txtPw.Text = employee.Password;
+            txtEmail.Text=employee.EMAIL;
+            txtPw.Text = employee.PASSWORD;
         }
 
         private void btnExits_Click(object sender, EventArgs e)

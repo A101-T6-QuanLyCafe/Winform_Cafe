@@ -59,11 +59,11 @@ namespace BLL
             if (updateItem != null)
             {
                 try {
-                    updateItem.Email = EUpdate.Email;
+                    updateItem.EMAIL = EUpdate.EMAIL;
                   
                     updateItem.FirstName = EUpdate.FirstName;
                     updateItem.LastName = EUpdate.LastName;
-                    updateItem.Password = EUpdate.Password;
+                    updateItem.PASSWORD = EUpdate.PASSWORD;
                     db.SubmitChanges();
                     return true;
                 }
@@ -79,7 +79,7 @@ namespace BLL
         }
         public bool Update2(Employee EUpdate)
         {
-            var updateItem = db.Employees.SingleOrDefault(x => x.Email == EUpdate.Email);
+            var updateItem = db.Employees.SingleOrDefault(x => x.EMAIL == EUpdate.EMAIL);
             if (updateItem != null)
             {
                 try
@@ -88,7 +88,7 @@ namespace BLL
 
                     updateItem.FirstName = EUpdate.FirstName;
                     updateItem.LastName = EUpdate.LastName;
-                    updateItem.Password = EUpdate.Password;
+                    updateItem.PASSWORD = EUpdate.PASSWORD;
                     db.SubmitChanges();
                     return true;
                 }
@@ -102,10 +102,10 @@ namespace BLL
                 return false;
             }
         }
-        public int GetEmployeeIDByEmail(string email)
+        public int GetEmployeeIDByEmail(string userName)
         {
             
-            var employee = db.Employees.FirstOrDefault(e => e.Email == email);
+            var employee = db.Employees.FirstOrDefault(e => e.USERNAME == userName);
 
             if (employee != null)
             {
@@ -117,10 +117,10 @@ namespace BLL
                 return -1;// khong tim thay
             }
         }
-        public Employee GetEmployeeByEmail(string email)
+        public Employee GetEmployeeByEmail(string userName)
         {
            
-            var employee = db.Employees.FirstOrDefault(e => e.Email==email);
+            var employee = db.Employees.FirstOrDefault(e => e.USERNAME== userName);
 
             return employee;
         }
