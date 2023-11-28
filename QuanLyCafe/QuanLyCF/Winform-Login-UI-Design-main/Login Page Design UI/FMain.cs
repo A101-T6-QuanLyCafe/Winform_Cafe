@@ -20,7 +20,7 @@ namespace Login_Page_Design_UI
 
         private void FMain_Load(object sender, EventArgs e)
         {
-
+            //haha
         }
 
         private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
