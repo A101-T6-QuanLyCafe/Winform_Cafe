@@ -61,6 +61,7 @@ namespace BLL
                     updateItem.ProductName = pUpdate.ProductName;
                     updateItem.Price=pUpdate.Price;
                     updateItem.typeProductID = pUpdate.typeProductID;
+                    updateItem.ISDELETE = pUpdate.ISDELETE;
                     db.SubmitChanges();
                     return true;
                 }
@@ -73,6 +74,19 @@ namespace BLL
             {
                 return false;
             }
+        }
+        public Product GetProductById(int productID)
+        {
+
+
+            // Lấy thông tin sản phẩm theo ID
+            return db.Products.FirstOrDefault(p => p.ProductID == productID);
+
+        }
+        public List<Product> GetDeletedproduct()
+        {
+            // Sử dụng LINQ để lọc những nhân viên có IsDelete bằng 1
+            return db.Products.Where(e => e.ISDELETE == 1).ToList();
         }
     }
 }

@@ -40,5 +40,39 @@ namespace Login_Page_Design_UI
             FQLPhieuNhap fr = new FQLPhieuNhap();
             fr.ShowDialog();
         }
+
+        private void quảnLíNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FQlNhanVien fr = new FQlNhanVien();
+            fr.ShowDialog();
+        }
+
+        private void quảnLíLoạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quảnLíSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FqlSanPham fr = new FqlSanPham();
+            fr.ShowDialog();
+        }
+
+        private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Fthongke fthongke = new Fthongke();
+            fthongke.ShowDialog();
+        }
+
+        private void quảnLíBànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quảnLíNguyênViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FqlNguyenLieu fr = new FqlNguyenLieu();
+            fr.ShowDialog();
+        }
     }
 }

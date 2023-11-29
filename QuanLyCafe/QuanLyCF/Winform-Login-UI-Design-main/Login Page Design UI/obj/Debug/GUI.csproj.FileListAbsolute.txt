@@ -82,9 +82,13 @@ F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Log
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\Login Page Design UI.exe.config
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\Login Page Design UI.exe
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\Login Page Design UI.pdb
-F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\BLL.dll
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\Guna.UI2.dll
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\BLL.pdb
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\BLL.dll.config
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\GUI.csproj.CopyComplete
 F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.FQLPhieuNhap.resources
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.FQlNhanVien.resources
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\BLL.dll
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.FqlSanPham.resources
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.FqlNguyenLieu.resources
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.Fthongke.resources

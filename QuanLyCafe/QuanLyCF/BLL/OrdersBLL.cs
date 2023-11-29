@@ -73,5 +73,16 @@ namespace BLL
                 return false;
             }
         }
+        public List<Order> GetOrdersByDateRange(DateTime startDate, DateTime endDate)
+        {
+           
+            
+             
+                return db.Orders
+                    .Where(o => o.OrderDate >= startDate && o.OrderDate <= endDate)
+                    .ToList();
+            
+        }
+        
     }
 }

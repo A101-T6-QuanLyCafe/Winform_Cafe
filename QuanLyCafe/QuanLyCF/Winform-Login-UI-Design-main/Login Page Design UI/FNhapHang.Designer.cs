@@ -43,11 +43,11 @@
             this.txtDaTra = new System.Windows.Forms.TextBox();
             this.dtp_NgayLap = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnInhd = new System.Windows.Forms.Button();
+            this.btnXacNhan = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.cboNcc = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
@@ -199,14 +199,15 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "ngày lập";
             // 
-            // btnInhd
+            // btnXacNhan
             // 
-            this.btnInhd.Location = new System.Drawing.Point(652, 422);
-            this.btnInhd.Name = "btnInhd";
-            this.btnInhd.Size = new System.Drawing.Size(75, 23);
-            this.btnInhd.TabIndex = 15;
-            this.btnInhd.Text = "In phiếu nhập";
-            this.btnInhd.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Location = new System.Drawing.Point(652, 422);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.Size = new System.Drawing.Size(75, 23);
+            this.btnXacNhan.TabIndex = 15;
+            this.btnXacNhan.Text = "xác nhận ";
+            this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // btnClear
             // 
@@ -216,6 +217,7 @@
             this.btnClear.TabIndex = 16;
             this.btnClear.Text = "clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // button1
             // 
@@ -223,8 +225,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 17;
-            this.button1.Text = "In phiếu nhập";
+            this.button1.Text = "thoát";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -235,12 +238,13 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Tìm theo tên";
             // 
-            // textBox1
+            // txtTimKiem
             // 
-            this.textBox1.Location = new System.Drawing.Point(728, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 22);
-            this.textBox1.TabIndex = 18;
+            this.txtTimKiem.Location = new System.Drawing.Point(728, 12);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(178, 22);
+            this.txtTimKiem.TabIndex = 18;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // cboNcc
             // 
@@ -327,10 +331,10 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cboNcc);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnInhd);
+            this.Controls.Add(this.btnXacNhan);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtp_NgayLap);
             this.Controls.Add(this.label5);
@@ -374,11 +378,11 @@
         private System.Windows.Forms.TextBox txtDaTra;
         private System.Windows.Forms.DateTimePicker dtp_NgayLap;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnInhd;
+        private System.Windows.Forms.Button btnXacNhan;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.ComboBox cboNcc;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnReload;

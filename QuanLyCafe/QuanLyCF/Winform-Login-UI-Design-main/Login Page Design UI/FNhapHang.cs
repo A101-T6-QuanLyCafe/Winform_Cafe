@@ -23,6 +23,7 @@ namespace Login_Page_Design_UI
         IncomingsDetailBLL incomingsDetailBLL = new IncomingsDetailBLL();
         SupplierBLL supplierBLL = new SupplierBLL();
         EmployeesBLL employeesBLL = new EmployeesBLL();
+        Incoming INCOMINGCURRENT;
         public FNhapHang()
         {
             InitializeComponent();
@@ -93,7 +94,13 @@ namespace Login_Page_Design_UI
 
             }
         }
-
+        public void ClearTXT()
+        {
+            txtMaPNN.Text = "";
+            txtGiaNhap.Text = "";
+            txtDaTra.Text = "";
+            txtNV.Text = "";
+        }
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadNL();
@@ -136,23 +143,62 @@ namespace Login_Page_Design_UI
                
                
             }
+            MessageBox.Show("vui lòng kiểm tra thông tin phiếu nhập và cập nhật số tiền đã thanh toán cho nhà cung cấp");
+            txtDaTra.Focus();
 
 
-            
 
             // Lấy thông tin Incoming sau khi đã được cập nhật
-            Incoming incoming = incomingsBLL.GetIncomingById(newIncoming.IncomingID);
+            INCOMINGCURRENT = incomingsBLL.GetIncomingById(newIncoming.IncomingID);
             
 
-            txtMaPNN.Text = incoming.IncomingID.ToString();
-            txtGiaNhap.Text = incoming.total_Price.ToString();
-            txtDaTra.Text = incoming.amount_paid.ToString();
+            txtMaPNN.Text = INCOMINGCURRENT.IncomingID.ToString();
+            txtGiaNhap.Text = INCOMINGCURRENT.total_Price.ToString();
+            txtDaTra.Text = INCOMINGCURRENT.amount_paid.ToString();
             txtNV.Text=nv.FirstName+" "+nv.LastName;
         }
 
         private void txtNV_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                INCOMINGCURRENT.amount_paid = int.Parse(txtDaTra.Text.Trim());
+                incomingsBLL.UpdateIncoming(INCOMINGCURRENT);
+                ClearTXT();
+            }
+            catch 
+            {
+
+                MessageBox.Show("error");
+            }
+            
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearTXT();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text.Length > 0)
+            {
+                dtg_NguyenLieu.DataSource= materialsBLL.SearchMaterialsByName(txtTimKiem.Text.Trim());
+            }
+            if(txtTimKiem.Text.Length == 0)
+            {
+                LoadNL();
+            }
         }
     }
 }

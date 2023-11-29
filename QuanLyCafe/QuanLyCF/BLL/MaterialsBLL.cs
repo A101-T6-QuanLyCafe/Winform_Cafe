@@ -71,5 +71,23 @@ namespace BLL
                 .Where(m => m.Materials_Name.Contains(searchString) && m.ISDELETE == 0)
                 .ToList();
         }
+        // Hàm tìm kiếm gần đúng materials dựa trên tên
+        public List<material> SearchMaterialsByName(string keyword)
+        {
+           
+            var result = db.materials
+                .Where(m => m.Materials_Name.Contains(keyword))
+                .ToList();
+
+            return result;
+        }
+        public List<material> GetMaterialsNotISdelete()
+        {
+            return db.materials.Where(m => m.ISDELETE == 0).ToList();
+        }
+        public List<material> GetMaterialsISdelete()
+        {
+            return db.materials.Where(m => m.ISDELETE == 1).ToList();
+        }
     }
 }

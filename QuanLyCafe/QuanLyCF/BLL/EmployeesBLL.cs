@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace BLL
             {
                 try
                 {
-                    db.Employees.DeleteOnSubmit(deleteEmloy);
+                    deleteEmloy.ISDELETE = 1;
                     db.SubmitChanges();
                     return true;
                 }
@@ -60,7 +61,9 @@ namespace BLL
             {
                 try {
                     updateItem.EMAIL = EUpdate.EMAIL;
-                  
+                    updateItem.PHONE=EUpdate.PHONE;
+                    updateItem.SEX = EUpdate.SEX;
+                    updateItem.ISDELETE = EUpdate.ISDELETE;
                     updateItem.FirstName = EUpdate.FirstName;
                     updateItem.LastName = EUpdate.LastName;
                     updateItem.PASSWORD = EUpdate.PASSWORD;
@@ -123,6 +126,16 @@ namespace BLL
             var employee = db.Employees.FirstOrDefault(e => e.USERNAME== userName);
 
             return employee;
+        }
+        public Employee GetEmployeeById(int employeeId)
+        {
+           
+            return db.Employees.SingleOrDefault(e => e.EmployeeID == employeeId);
+        }
+         public List<Employee> GetDeletedEmployees()
+        {
+           
+            return db.Employees.Where(e => e.ISDELETE == 1).ToList();
         }
     }
 }
