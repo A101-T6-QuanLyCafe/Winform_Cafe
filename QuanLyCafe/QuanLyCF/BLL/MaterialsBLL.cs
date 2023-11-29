@@ -61,5 +61,15 @@ namespace BLL
                 db.SubmitChanges();
             }
         }
+        public List<material> GetMaterialsBySupplierID(int supplierID)
+        {
+            return db.materials.Where(m => m.supplieriD == supplierID && m.ISDELETE == 0).ToList();
+        }
+        public List<material> FuzzySearchMaterialsByName(string searchString)
+        {
+            return db.materials
+                .Where(m => m.Materials_Name.Contains(searchString) && m.ISDELETE == 0)
+                .ToList();
+        }
     }
 }

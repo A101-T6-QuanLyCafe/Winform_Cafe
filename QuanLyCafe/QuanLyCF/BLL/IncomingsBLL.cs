@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,5 +53,11 @@ namespace BLL
                 dbContext.SubmitChanges();
             }
         }
+        public Incoming GetIncomingById(int incomingId)
+        {
+            dbContext.Refresh(RefreshMode.OverwriteCurrentValues, dbContext.Incomings.FirstOrDefault(i => i.IncomingID == incomingId));
+            return dbContext.Incomings.FirstOrDefault(i => i.IncomingID == incomingId);
+        }
+
     }
 }

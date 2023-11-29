@@ -562,12 +562,12 @@ namespace BLL
 		
 		private EntitySet<EmployeePermission> _EmployeePermissions;
 		
+		private EntitySet<Incoming> _Incomings;
+		
 		private EntitySet<Order> _Orders;
-        private string id;
-        private string pass;
-
-        #region Extensibility Method Definitions
-        partial void OnLoaded();
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnEmployeeIDChanging(int value);
@@ -595,20 +595,12 @@ namespace BLL
 		public Employee()
 		{
 			this._EmployeePermissions = new EntitySet<EmployeePermission>(new Action<EmployeePermission>(this.attach_EmployeePermissions), new Action<EmployeePermission>(this.detach_EmployeePermissions));
+			this._Incomings = new EntitySet<Incoming>(new Action<Incoming>(this.attach_Incomings), new Action<Incoming>(this.detach_Incomings));
 			this._Orders = new EntitySet<Order>(new Action<Order>(this.attach_Orders), new Action<Order>(this.detach_Orders));
 			OnCreated();
 		}
-
-        public Employee(int id, string firstname, string lastname, string email, string pass)
-        {
-            EmployeeID = id;
-            FirstName = firstname;
-            LastName = lastname;
-            EMAIL = email;
-            PASSWORD = pass;
-        }
-
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int EmployeeID
 		{
 			get
@@ -821,6 +813,19 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Incoming", Storage="_Incomings", ThisKey="EmployeeID", OtherKey="EmployeeID")]
+		public EntitySet<Incoming> Incomings
+		{
+			get
+			{
+				return this._Incomings;
+			}
+			set
+			{
+				this._Incomings.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Order", Storage="_Orders", ThisKey="EmployeeID", OtherKey="EmployeeID")]
 		public EntitySet<Order> Orders
 		{
@@ -866,6 +871,18 @@ namespace BLL
 			entity.Employee = null;
 		}
 		
+		private void attach_Incomings(Incoming entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_Incomings(Incoming entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
+		}
+		
 		private void attach_Orders(Order entity)
 		{
 			this.SendPropertyChanging();
@@ -893,7 +910,11 @@ namespace BLL
 		
 		private System.Nullable<double> _amount_paid;
 		
+		private int _EmployeeID;
+		
 		private EntitySet<Incomings_Detail> _Incomings_Details;
+		
+		private EntityRef<Employee> _Employee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -907,11 +928,14 @@ namespace BLL
     partial void Ontotal_PriceChanged();
     partial void Onamount_paidChanging(System.Nullable<double> value);
     partial void Onamount_paidChanged();
+    partial void OnEmployeeIDChanging(int value);
+    partial void OnEmployeeIDChanged();
     #endregion
 		
 		public Incoming()
 		{
 			this._Incomings_Details = new EntitySet<Incomings_Detail>(new Action<Incomings_Detail>(this.attach_Incomings_Details), new Action<Incomings_Detail>(this.detach_Incomings_Details));
+			this._Employee = default(EntityRef<Employee>);
 			OnCreated();
 		}
 		
@@ -995,6 +1019,30 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="Int NOT NULL")]
+		public int EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					if (this._Employee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Incoming_Incomings_Detail", Storage="_Incomings_Details", ThisKey="IncomingID", OtherKey="IncomingID")]
 		public EntitySet<Incomings_Detail> Incomings_Details
 		{
@@ -1005,6 +1053,40 @@ namespace BLL
 			set
 			{
 				this._Incomings_Details.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Incoming", Storage="_Employee", ThisKey="EmployeeID", OtherKey="EmployeeID", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.Incomings.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.Incomings.Add(this);
+						this._EmployeeID = value.EmployeeID;
+					}
+					else
+					{
+						this._EmployeeID = default(int);
+					}
+					this.SendPropertyChanged("Employee");
+				}
 			}
 		}
 		

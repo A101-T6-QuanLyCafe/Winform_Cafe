@@ -29,6 +29,7 @@
       <Column Name="PASSWORD" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="ISDELETE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Employee_EmployeePermission" Member="EmployeePermissions" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="EmployeePermission" />
+      <Association Name="Employee_Incoming" Member="Incomings" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Incoming" />
       <Association Name="Employee_Order" Member="Orders" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Order" />
     </Type>
   </Table>
@@ -38,7 +39,9 @@
       <Column Name="IncomingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="total_Price" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="amount_paid" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Incoming_Incomings_Detail" Member="Incomings_Details" ThisKey="IncomingID" OtherKey="IncomingID" Type="Incomings_Detail" />
+      <Association Name="Employee_Incoming" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Incomings_Detail" Member="Incomings_Details">

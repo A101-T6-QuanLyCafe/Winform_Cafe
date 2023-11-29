@@ -25,7 +25,19 @@ namespace Login_Page_Design_UI
 
         private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fAccount fr = new fAccount();
+            //fAccount fr = new fAccount();
+            //fr.ShowDialog();
+        }
+
+        private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FNhapHang fr = new FNhapHang();
+            fr.ShowDialog();
+        }
+
+        private void quảnLíPhiếuNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FQLPhieuNhap fr = new FQLPhieuNhap();
             fr.ShowDialog();
         }
     }

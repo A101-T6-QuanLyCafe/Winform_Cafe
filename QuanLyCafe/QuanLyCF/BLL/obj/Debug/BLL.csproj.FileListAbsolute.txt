@@ -19,3 +19,10 @@ F:\Ki 7\DoAnUngDung\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.AssemblyReferen
 F:\Ki 7\DoAnUngDung\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 F:\Ki 7\DoAnUngDung\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
 F:\Ki 7\DoAnUngDung\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll.config
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.pdb
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
+F:\Ki 7\DoanUDTM\QuanLyCafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb
