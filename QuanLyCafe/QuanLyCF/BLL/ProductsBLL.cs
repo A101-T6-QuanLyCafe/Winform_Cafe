@@ -88,5 +88,19 @@ namespace BLL
             // Sử dụng LINQ để lọc những nhân viên có IsDelete bằng 1
             return db.Products.Where(e => e.ISDELETE == 1).ToList();
         }
+
+        #region Hoang
+        public static List<Product> GetAllProduct()
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Products.Where(x => true).ToList();
+        }
+
+        public static List<Product> GetProductByTypeID(int id)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Products.Where(x => x.typeProductID == id).ToList();
+        }
+        #endregion
     }
 }

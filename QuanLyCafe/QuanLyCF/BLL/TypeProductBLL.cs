@@ -53,5 +53,13 @@ namespace BLL
                 return dbContext.typeProducts.ToList();
             
         }
+
+        #region hoang
+        public static List<typeProduct> GetAllProductType()
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.typeProducts.Where(x => true).ToList();
+        }
+        #endregion
     }
 }

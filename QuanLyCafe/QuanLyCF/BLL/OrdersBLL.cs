@@ -83,6 +83,71 @@ namespace BLL
                     .ToList();
             
         }
-        
+        #region Hoang
+        public static Order GetOrderFromActiveTable(int v)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Orders.Where(x => x.TablesID == v && x.status == 0).FirstOrDefault();
+        }
+
+        public static Boolean CreateNewOrder(int empID, int currentTableID1)
+        {
+            Order order = new Order();
+            order.EmployeeID = empID;
+            order.TablesID = currentTableID1;
+            order.status = 0;
+            order.TotalAmount = 0;
+            order.OrderDate = DateTime.Now;
+            try
+            {
+                CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+                DB.Orders.InsertOnSubmit(order);
+                DB.SubmitChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            
+        }
+
+        public static void SetTotal(int orderID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            Order order = DB.Orders.FirstOrDefault(x => x.OrderID == orderID);
+            List<OrderDetail> orderDetails = OrderDetailBLL.GetOrderDetailByOrderID(orderID);
+            float total = 0;
+            foreach (OrderDetail detail in orderDetails)
+            {
+                total +=  detail.Quantity * detail.Product.Price;
+            }
+            order.TotalAmount = total;
+            DB.SubmitChanges();
+        }
+
+        public static string GetTotal(int orderID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            Order order = DB.Orders.FirstOrDefault(x => x.OrderID == orderID);
+            return order.TotalAmount.ToString();
+        }
+
+        public static void ChangeTable(int currentTableID, int selected_table)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            Order order = DB.Orders.FirstOrDefault(x => x.TablesID == currentTableID && x.status == 0);
+            order.TablesID = selected_table;
+            DB.SubmitChanges();
+        }
+
+        public static void Payments(int currentTableID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            Order order = DB.Orders.FirstOrDefault(x => x.TablesID == currentTableID && x.status == 0);
+            order.status = 1;
+            DB.SubmitChanges();
+        }
+        #endregion
     }
 }
