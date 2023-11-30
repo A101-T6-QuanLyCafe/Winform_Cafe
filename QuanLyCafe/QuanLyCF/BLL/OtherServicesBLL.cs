@@ -13,7 +13,7 @@ namespace BLL
     {
         static String CTName = "Khang Cafe";
         static String Address = "140 Lê Trọng Tấn, P.Tây Thạnh, Q.Tân Phú";
-
+        static string DVT = "$";
         public static void ExportFile(DataTable dataTable, List<string> plus, string sheetName, string title)
         {
             //Tạo các đối tượng Excel
@@ -183,7 +183,7 @@ namespace BLL
             textTotal.Value2 = "Tổng Tiền: ";
 
             Microsoft.Office.Interop.Excel.Range total = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd +1, columnEnd];
-            total.Value2 = plus[3];
+            total.Value2 = plus[3]+DVT;
 
             //Căn giữa cả bảng 
             oSheet.get_Range(c1, c2).HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;

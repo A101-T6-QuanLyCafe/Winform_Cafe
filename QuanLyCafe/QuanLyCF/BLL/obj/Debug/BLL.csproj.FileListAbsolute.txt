@@ -40,3 +40,10 @@ C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\B
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll.config
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.pdb
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
+F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb
