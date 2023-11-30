@@ -26,6 +26,7 @@ namespace Login_Page_Design_UI
 
         private void Sales_Load(object sender, EventArgs e)
         {
+            ChangeTableNameDisplay();
             LoadAllTable();
             LoadCboProductType();
             LoadCboTable();
@@ -147,6 +148,7 @@ namespace Login_Page_Design_UI
             newODT.OrderID = order.OrderID;
             newODT.ProductID = int.Parse(cbo_product.SelectedValue.ToString());
             newODT.Quantity = int.Parse(nud_quantity.Value.ToString());
+            newODT.Price = ProductsBLL.GetPrice(newODT.ProductID);
             //xửa lý việc thêm hoặc chi tiết hóa đơn 
             // cập nhật thành tiền 
             // hiển thị chi tiết hóa đơn lên datagridview
@@ -196,6 +198,11 @@ namespace Login_Page_Design_UI
                 MessageBox.Show("Không thể chuyển sang bàn này");
                 return;
             }
+            DialogResult dialogResult = MessageBox.Show("Xác Nhận chuyển bàn", "Chuyển bàn", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
             TableTBLL.ChangeTable(currentTableID, selected_table);
             OrdersBLL.ChangeTable(currentTableID, selected_table);
             LoadAllTable();
@@ -208,10 +215,18 @@ namespace Login_Page_Design_UI
             if (currentTableID == -1) return;
             if (TableTBLL.IsEmpty(currentTableID))
                 return;
+            DialogResult dialogResult = MessageBox.Show("Xác Nhận thanh toán", "Thanh toán", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
             OrdersBLL.Payments(currentTableID);
             TableTBLL.Payments(currentTableID);
             LoadAllTable();
             LoadOrderDetail();
+            currentTableID = -1;
+            ChangeTableNameDisplay();
         }
 
         private void btn_combineTable_Click(object sender, EventArgs e)
@@ -224,12 +239,21 @@ namespace Login_Page_Design_UI
                 MessageBox.Show("Không thể chuyển sang bàn này");
                 return;
             }
+            DialogResult dialogResult = MessageBox.Show("Xác Nhận gộp bàn", "Gộp bàn", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
             Boolean temp = OrdersBLL.CombineTable(currentTableID, selected_table);
 
             LoadAllTable();
             LoadOrderDetail();
         }
 
+        private void ChangeTableNameDisplay()
+        {
+            lb_currentTable.Text = "Select a table";
+        }
 
     }
 }

@@ -101,6 +101,12 @@ namespace BLL
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             return DB.Products.Where(x => x.typeProductID == id).ToList();
         }
+
+        public static float GetPrice(int productID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Products.FirstOrDefault(x => x.ProductID == productID).Price;
+        }
         #endregion
     }
 }
