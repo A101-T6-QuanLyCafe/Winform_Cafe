@@ -15,11 +15,11 @@ namespace Login_Page_Design_UI
     {
         int currentTableID = -1;
         Employee employee;
-        public Sales(Employee emp)
+        public Sales()
         {
             InitializeComponent();
             employee = new Employee();
-            employee = emp;
+            employee.EmployeeID = 2;
         }
 
 
@@ -207,14 +207,31 @@ namespace Login_Page_Design_UI
             if (currentTableID == -1) return;
             if (TableTBLL.IsEmpty(currentTableID))
                 return;
-            TableTBLL.Payments(currentTableID);
             OrdersBLL.Payments(currentTableID);
+            TableTBLL.Payments(currentTableID);
             LoadAllTable();
             LoadOrderDetail();
         }
 
         private void btn_combineTable_Click(object sender, EventArgs e)
         {
+            if (currentTableID == -1) return;
+            int selected_table = int.Parse(cbo_table.SelectedValue.ToString());
+            if (currentTableID == selected_table) return;
+            if (TableTBLL.IsEmpty(selected_table))
+            {
+                MessageBox.Show("Không thể chuyển sang bàn này");
+                return;
+            }
+            Boolean temp = OrdersBLL.CombineTable(currentTableID, selected_table);
+
+            LoadAllTable();
+            LoadOrderDetail();
+        }
+
+        private void detail_panel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
+}

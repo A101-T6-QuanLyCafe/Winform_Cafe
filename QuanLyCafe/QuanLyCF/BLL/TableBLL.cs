@@ -91,6 +91,14 @@ namespace BLL
             start.status = 0;
             DB.SubmitChanges();
         }
+
+        internal static void CombineTable(int currentTableID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            tablesT start = DB.tablesTs.FirstOrDefault(x => x.TableID == currentTableID);
+            start.status = 0;
+            DB.SubmitChanges();
+        }
         #endregion
     }
 }

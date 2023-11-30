@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class OrderDetailBLL
+    public class OrderDetailBLL
     {
         #region Hoang
         public static void createOrderDetail(OrderDetail newODT)
@@ -32,6 +32,30 @@ namespace BLL
         {
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             return DB.OrderDetails.Where(x => x.OrderID == orderID).ToList();
+        }
+
+        internal static void MoveToNewOrderID(int orderID1, int orderID2)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            // lần lượt lấy ra danh sách order detal bàn đầu vào bàn đich
+            // duyệt qua mỗi order detal trong bàn đầu nếu trùng mã sản phẩm số lượng += sản phẩm
+            // đồng thời xóa orderdetal đó 
+            // nếu  không đổi orderID của orderdetail đó
+            List<OrderDetail> oldlist = DB.OrderDetails.Where(x => x.OrderID == oldOrderID).ToList();
+            List<OrderDetail> newlist = DB.OrderDetails.Where(x => x.OrderID == newOrderID).ToList();
+
+            foreach (OrderDetail detail in oldlist)
+            {
+                OrderDetail temp = newlist.FirstOrDefault(x => x.ProductID == detail.ProductID);
+                if (temp != null)
+                {
+                    temp.Quantity +=  detail.Quantity;
+                    DB.OrderDetails.DeleteOnSubmit(detail);
+                }
+                else
+                    detail.OrderID = newOrderID;
+            }
+            DB.SubmitChanges();
         }
         #endregion
     }

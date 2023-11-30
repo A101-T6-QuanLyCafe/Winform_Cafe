@@ -148,6 +148,24 @@ namespace BLL
             order.status = 1;
             DB.SubmitChanges();
         }
+
+        public static bool CombineTable(int currentTableID, int selected_table)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            // lấy toàn bộ order detal của bàn cũ chuyển sang bàn mới 
+            // xóa order cũ
+            Order curOrder = DB.Orders.FirstOrDefault(x => x.TablesID ==  currentTableID && x.status == 0);
+            if (curOrder == null) return false;
+            Order endOrder = DB.Orders.FirstOrDefault(x => x.TablesID ==  selected_table && x.status == 0);
+            if (endOrder == null) return false;
+            if (curOrder == endOrder) return false;
+            OrderDetailBLL.MoveToNewOrderID(curOrder.OrderID, endOrder.OrderID);
+            DB.Orders.DeleteOnSubmit(curOrder);
+            DB.SubmitChanges();
+            TableTBLL.CombineTable(currentTableID);
+            OrdersBLL.SetTotal(endOrder.OrderID);
+            return true;
+        }
         #endregion
     }
 }
