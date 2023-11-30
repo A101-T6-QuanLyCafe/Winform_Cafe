@@ -146,7 +146,33 @@ namespace BLL
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             Order order = DB.Orders.FirstOrDefault(x => x.TablesID == currentTableID && x.status == 0);
             order.status = 1;
+            ExportBill(order);
             DB.SubmitChanges();
+        }
+
+        public static void ExportBill(Order order)
+        {
+            //
+            List<OrderDetail> orderDetails = OrderDetailBLL.GetOrderDetailByOrderID(order.OrderID);
+            System.Data.DataTable data = new System.Data.DataTable();
+            float total = 0;
+            data.Columns.Add("Tên sản phẩm");
+            data.Columns.Add("Số lượng");
+            data.Columns.Add("Đơn giá");
+            data.Columns.Add("Thành tiền");
+            foreach (OrderDetail detail in orderDetails)
+            {
+                float unitPrice = (detail.Quantity * detail.Price);
+                data.Rows.Add(detail.Product.ProductName, detail.Quantity, detail.Price, unitPrice);
+                total += unitPrice;
+            }
+            Employee employee = EmployeesBLL.GetEmpByID(order.EmployeeID);
+            List<String> plus = new List<String>();
+            plus.Add(DateTime.Now.ToShortDateString());
+            plus.Add(order.TablesID.ToString());
+            plus.Add(employee.EmployeeID.ToString());
+            plus.Add(total.ToString());
+            OtherServicesBLL.ExportFile(data, plus, "Bill", "Hoá Đơn");
         }
 
         public static bool CombineTable(int currentTableID, int selected_table)
