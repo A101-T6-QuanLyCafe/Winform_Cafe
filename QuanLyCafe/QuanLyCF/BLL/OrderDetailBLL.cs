@@ -34,7 +34,7 @@ namespace BLL
             return DB.OrderDetails.Where(x => x.OrderID == orderID).ToList();
         }
 
-        internal static void MoveToNewOrderID(int orderID1, int orderID2)
+        internal static void MoveToNewOrderID(int oldOrderID, int newOrderID)
         {
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             // lần lượt lấy ra danh sách order detal bàn đầu vào bàn đich

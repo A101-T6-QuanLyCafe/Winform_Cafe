@@ -38,7 +38,6 @@
             this.cbo_product = new System.Windows.Forms.ComboBox();
             this.cbo_type = new System.Windows.Forms.ComboBox();
             this.detail_panel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_combineTable = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_total = new System.Windows.Forms.TextBox();
@@ -46,6 +45,7 @@
             this.btn_submit = new System.Windows.Forms.Button();
             this.cbo_table = new System.Windows.Forms.ComboBox();
             this.btn_swapTable = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_quantity)).BeginInit();
             this.detail_panel.SuspendLayout();
@@ -100,6 +100,7 @@
             this.btn_order.TabIndex = 4;
             this.btn_order.Text = "Thêm món";
             this.btn_order.UseVisualStyleBackColor = true;
+            this.btn_order.Click += new System.EventHandler(this.btn_order_Click);
             // 
             // label2
             // 
@@ -134,6 +135,7 @@
             this.cbo_type.Name = "cbo_type";
             this.cbo_type.Size = new System.Drawing.Size(209, 24);
             this.cbo_type.TabIndex = 0;
+            this.cbo_type.SelectionChangeCommitted += new System.EventHandler(this.cbo_type_SelectionChangeCommitted);
             // 
             // detail_panel
             // 
@@ -157,16 +159,6 @@
             this.detail_panel.Size = new System.Drawing.Size(527, 667);
             this.detail_panel.TabIndex = 1;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.detail_panel);
-            this.panel1.Controls.Add(this.Table_panel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1062, 673);
-            this.panel1.TabIndex = 1;
-            // 
             // btn_combineTable
             // 
             this.btn_combineTable.Location = new System.Drawing.Point(35, 605);
@@ -175,6 +167,7 @@
             this.btn_combineTable.TabIndex = 23;
             this.btn_combineTable.Text = "Gộp bàn";
             this.btn_combineTable.UseVisualStyleBackColor = true;
+            this.btn_combineTable.Click += new System.EventHandler(this.btn_combineTable_Click);
             // 
             // label3
             // 
@@ -201,6 +194,7 @@
             this.btn_getTable.TabIndex = 20;
             this.btn_getTable.Text = "Đặt bàn";
             this.btn_getTable.UseVisualStyleBackColor = true;
+            this.btn_getTable.Click += new System.EventHandler(this.btn_getTable_Click);
             // 
             // btn_submit
             // 
@@ -210,6 +204,7 @@
             this.btn_submit.TabIndex = 19;
             this.btn_submit.Text = "Thanh toán";
             this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // cbo_table
             // 
@@ -227,6 +222,17 @@
             this.btn_swapTable.TabIndex = 17;
             this.btn_swapTable.Text = "Chuyển bàn";
             this.btn_swapTable.UseVisualStyleBackColor = true;
+            this.btn_swapTable.Click += new System.EventHandler(this.btn_swapTable_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.detail_panel);
+            this.panel1.Controls.Add(this.Table_panel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1062, 673);
+            this.panel1.TabIndex = 1;
             // 
             // Sales
             // 

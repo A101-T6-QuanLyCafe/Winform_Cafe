@@ -74,5 +74,11 @@ namespace Login_Page_Design_UI
             FqlNguyenLieu fr = new FqlNguyenLieu();
             fr.ShowDialog();
         }
+
+        private void bánHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sales fr = new Sales();
+            fr.ShowDialog();
+        }
     }
 }

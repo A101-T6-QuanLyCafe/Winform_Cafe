@@ -15,11 +15,11 @@ namespace Login_Page_Design_UI
     {
         int currentTableID = -1;
         Employee employee;
+        EmployeesBLL employeesBLL = new EmployeesBLL();
         public Sales()
         {
             InitializeComponent();
-            employee = new Employee();
-            employee.EmployeeID = 2;
+            employee = employeesBLL.GetEmployeeByEmail(Properties.Settings.Default.Username);
         }
 
 
@@ -229,9 +229,6 @@ namespace Login_Page_Design_UI
             LoadOrderDetail();
         }
 
-        private void detail_panel_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
 }
