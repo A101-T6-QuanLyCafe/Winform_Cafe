@@ -34,7 +34,7 @@ namespace Login_Page_Design_UI
                 string enteredPassword = txtPassword.Text;
 
             // Kiểm tra thông tin đăng nhập
-            var user = Database.Employees.SingleOrDefault(emp => emp.USERNAME == enteredEmail && emp.PASSWORD == enteredPassword);
+            var user = Database.Employees.SingleOrDefault(emp => emp.USERNAME == enteredEmail && emp.PASSWORD == enteredPassword && emp.ISDELETE==0);
 
                 if (user != null)
                 {

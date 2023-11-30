@@ -20,6 +20,7 @@ namespace Login_Page_Design_UI
         {
             InitializeComponent();
             employee = employeesBLL.GetEmployeeByEmail(Properties.Settings.Default.Username);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
 

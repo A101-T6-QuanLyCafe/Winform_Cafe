@@ -43,7 +43,7 @@ namespace Login_Page_Design_UI
 
         private void quảnLíNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FQlNhanVien fr = new FQlNhanVien();
+            EmployeeManager fr = new EmployeeManager();
             fr.ShowDialog();
         }
 

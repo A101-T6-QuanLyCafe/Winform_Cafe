@@ -77,6 +77,7 @@
             this.cb_isDelete.TabIndex = 7;
             this.cb_isDelete.Text = "đã xóa";
             this.cb_isDelete.UseVisualStyleBackColor = true;
+            this.cb_isDelete.CheckedChanged += new System.EventHandler(this.cb_isDelete_CheckedChanged);
             // 
             // cbo_searchBy
             // 

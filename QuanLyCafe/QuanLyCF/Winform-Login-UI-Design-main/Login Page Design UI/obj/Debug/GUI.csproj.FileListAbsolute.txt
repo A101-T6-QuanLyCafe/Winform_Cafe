@@ -121,3 +121,5 @@ F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login 
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\BLL.pdb
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\BLL.dll.config
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\GUI.csproj.CopyComplete
+F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.EmployeeManager.resources
+F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\InputTextBoxLib.dll
