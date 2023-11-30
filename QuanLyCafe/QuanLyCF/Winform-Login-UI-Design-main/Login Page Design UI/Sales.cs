@@ -15,11 +15,11 @@ namespace Login_Page_Design_UI
     {
         int currentTableID = -1;
         Employee employee;
-        public Sales()
+        public Sales(Employee emp)
         {
             InitializeComponent();
             employee = new Employee();
-            employee.EmployeeID = 2;
+            employee = emp;
         }
 
 
