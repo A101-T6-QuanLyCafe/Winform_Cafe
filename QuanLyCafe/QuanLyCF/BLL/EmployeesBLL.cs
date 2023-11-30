@@ -137,5 +137,179 @@ namespace BLL
            
             return db.Employees.Where(e => e.ISDELETE == 1).ToList();
         }
+
+
+        #region Hoang
+        public static List<Employee> getAllEmpFill(String txt_search, String field, bool showdelete)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            List<Employee> emps = new List<Employee>();
+            switch (field)
+            {
+                case "USERNAME":
+                    emps = DB.Employees.Where(x => x.USERNAME.Contains(txt_search)).ToList();
+                    break;
+                case "NAME":
+                    emps = DB.Employees.Where(x => x.FirstName.Contains(txt_search) || x.LastName.Contains(txt_search)).ToList();
+                    break;
+                case "PHONE":
+                    emps = DB.Employees.Where(x => x.PHONE.Contains(txt_search)).ToList();
+                    break;
+                default:
+                    emps = DB.Employees.Where(x => true).ToList();
+                    break;
+            }
+            if (showdelete)
+            {
+                return emps.Where(x => x.ISDELETE == 1).ToList();
+            }
+            else
+                return emps.Where(x => x.ISDELETE == 0).ToList();
+        }
+
+        public static Employee GetEmpByID(int id)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Employees.FirstOrDefault(x => x.EmployeeID == id);
+        }
+
+        public static String AddEmployee(Employee emp)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            String errString = "";
+            if (ExistsEmail(emp.EMAIL))
+                errString += "Email đã tồn tại \n";
+            if (ExistsPhone(emp.PHONE))
+                errString += "Số điện thoại đã tồn tại \n";
+            if (ExistsUsername(emp.USERNAME))
+                errString += "tên tài khoản đã tồn tại \n";
+            if (errString.Length > 0)
+            {
+                return errString;
+            }
+
+
+            try
+            {
+                DB.Employees.InsertOnSubmit(emp);
+                DB.SubmitChanges();
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+                return "thêm thất bại";
+            }
+
+        }
+
+        internal static Boolean ExistsEmail(String email)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Employees.Where(x => x.EMAIL == email).FirstOrDefault() !=null;
+        }
+        internal static Boolean ExistsPhone(String phone)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Employees.Where(x => x.PHONE == phone).FirstOrDefault() != null;
+        }
+        internal static Boolean ExistsUsername(String username)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Employees.Where(x => x.USERNAME == username).FirstOrDefault() != null;
+
+        }
+
+        public static string EditEmployee(Employee emp)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            String errString = "";
+            Employee cemp = DB.Employees.Where(x => x.EmployeeID == emp.EmployeeID).FirstOrDefault();
+            cemp.FirstName = emp.FirstName;
+            cemp.LastName = emp.LastName;
+            if (cemp.EMAIL != emp.EMAIL)
+            {
+                if (ExistsEmail(emp.EMAIL))
+                {
+                    errString += "Email đã tồn tại \n";
+                }
+                else
+                    cemp.EMAIL = emp.EMAIL;
+            }
+            if (cemp.PHONE != emp.PHONE)
+            {
+                if (ExistsPhone(emp.PHONE))
+                {
+                    errString += "Số điện thoại đã tồn tại \n";
+                }
+                else
+                    cemp.PHONE = emp.PHONE;
+            }
+            if (cemp.USERNAME != emp.USERNAME)
+            {
+                if (ExistsUsername(emp.USERNAME))
+                {
+                    errString += "tên tài khoản đã tồn tại \n";
+                }
+                else
+                    cemp.USERNAME = emp.USERNAME;
+            }
+            cemp.PASSWORD = emp.PASSWORD;
+            cemp.DOB = emp.DOB;
+            cemp.SEX = emp.SEX;
+            if (errString.Length > 0)
+            {
+
+                return errString;
+            }
+
+            try
+            {
+                DB.SubmitChanges();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "sửa thất bại";
+            }
+        }
+
+        public static Boolean RemoveEmployee(string empid)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            Employee cemp = DB.Employees.Where(x => x.EmployeeID == int.Parse(empid)).FirstOrDefault();
+            cemp.ISDELETE = 1;
+            try
+            {
+                DB.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+
+        public static bool ActiveEmployee(string empid)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            Employee cemp = DB.Employees.Where(x => x.EmployeeID == int.Parse(empid)).FirstOrDefault();
+            cemp.ISDELETE = 0;
+            try
+            {
+                DB.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
+        #endregion
     }
 }

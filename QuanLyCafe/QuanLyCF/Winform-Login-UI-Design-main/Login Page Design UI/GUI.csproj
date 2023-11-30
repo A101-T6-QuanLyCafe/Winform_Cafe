@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeManager.Designer.cs">
+      <DependentUpon>EmployeeManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="flogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EmployeeManager.resx">
+      <DependentUpon>EmployeeManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flogin.resx">
       <DependentUpon>flogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,9 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Mesa de trabajo 1 copia%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="InputTextBoxLib.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
