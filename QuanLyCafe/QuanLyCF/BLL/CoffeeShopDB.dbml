@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CoffeeShopDB" Class="CoffeeShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FMAJ644;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Hoangs\SQLEXPRESS;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.EmployeePermissions" Member="EmployeePermissions">
     <Type Name="EmployeePermission">
       <Column Name="EmployeePermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -62,9 +62,12 @@
       <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="supplieriD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ISDELETE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="material_Incomings_Detail" Member="Incomings_Details" ThisKey="Materials_ID" OtherKey="Materials_ID" Type="Incomings_Detail" />
+      <Association Name="material_RecipeInfo" Member="RecipeInfos" ThisKey="Materials_ID" OtherKey="MaterialID" Type="RecipeInfo" />
       <Association Name="supplier_material" Member="supplier" ThisKey="supplieriD" OtherKey="supplierID" Type="supplier" IsForeignKey="true" />
       <Association Name="TypeMaterial_material" Member="TypeMaterial" ThisKey="TypeID" OtherKey="TypeID" Type="TypeMaterial" IsForeignKey="true" />
     </Type>
@@ -117,8 +120,27 @@
       <Column Name="Price" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
       <Column Name="typeProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ISDELETE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Craftable" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductID" OtherKey="ProductID" Type="OrderDetail" />
       <Association Name="typeProduct_Product" Member="typeProduct" ThisKey="typeProductID" OtherKey="typeProductID" Type="typeProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recipe" Member="Recipes">
+    <Type Name="Recipe">
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Recipe_RecipeInfo" Member="RecipeInfos" ThisKey="RecipeID" OtherKey="RecipeID" Type="RecipeInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RecipeInfo" Member="RecipeInfos">
+    <Type Name="RecipeInfo">
+      <Column Name="RecipeInfoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaterialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="material_RecipeInfo" Member="material" ThisKey="MaterialID" OtherKey="Materials_ID" Type="material" IsForeignKey="true" />
+      <Association Name="Recipe_RecipeInfo" Member="Recipe" ThisKey="RecipeID" OtherKey="RecipeID" Type="Recipe" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Screens" Member="Screens">
@@ -142,6 +164,8 @@
   <Table Name="dbo.tablesT" Member="tablesTs">
     <Type Name="tablesT">
       <Column Name="TableID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ISDELETE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="tablesT_Order" Member="Orders" ThisKey="TableID" OtherKey="TablesID" Type="Order" />

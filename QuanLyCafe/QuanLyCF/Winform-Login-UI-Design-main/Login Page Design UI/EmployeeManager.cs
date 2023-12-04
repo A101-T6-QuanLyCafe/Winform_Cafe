@@ -184,6 +184,5 @@ namespace Login_Page_Design_UI
             btn_search.PerformClick();
         }
 
-       
     }
 }

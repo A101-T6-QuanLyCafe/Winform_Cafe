@@ -1,0 +1,12 @@
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\bin\Debug\net6.0\CustomControlCafe.deps.json
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\bin\Debug\net6.0\CustomControlCafe.dll
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\bin\Debug\net6.0\CustomControlCafe.pdb
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.csproj.AssemblyReference.cache
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.AssemblyInfoInputs.cache
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.AssemblyInfo.cs
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.csproj.CoreCompileInputs.cache
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.dll
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\refint\CustomControlCafe.dll
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\CustomControlCafe.pdb
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\CustomControlCafe\obj\Debug\net6.0\ref\CustomControlCafe.dll

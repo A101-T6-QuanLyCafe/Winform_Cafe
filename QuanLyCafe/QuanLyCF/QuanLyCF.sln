@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "Winform-Login-UI-Design-main\Login Page Design UI\GUI.csproj", "{0B1AE016-C769-4F67-998B-818721407DE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlCafe", "CustomControlCafe\CustomControlCafe.csproj", "{CD15A0D9-DA9C-4714-991F-B8688E6F62EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0B1AE016-C769-4F67-998B-818721407DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B1AE016-C769-4F67-998B-818721407DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B1AE016-C769-4F67-998B-818721407DE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD15A0D9-DA9C-4714-991F-B8688E6F62EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD15A0D9-DA9C-4714-991F-B8688E6F62EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD15A0D9-DA9C-4714-991F-B8688E6F62EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD15A0D9-DA9C-4714-991F-B8688E6F62EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

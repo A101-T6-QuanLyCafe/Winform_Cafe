@@ -18,12 +18,7 @@ namespace BLL
             return _context.tablesTs.ToList();
         }
 
-        // Phương thức thêm bàn mới
-        public void AddTable(tablesT newTable)
-        {
-            _context.tablesTs.InsertOnSubmit(newTable);
-            _context.SubmitChanges();
-        }
+        
 
         // Phương thức cập nhật thông tin bàn
         public void UpdateTable(tablesT table)
@@ -54,6 +49,9 @@ namespace BLL
 
 
         #region Hoang
+
+        // Phương thức thêm bàn mới
+        
         public static void BookTable(int currentTableID)
         {
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
@@ -98,6 +96,70 @@ namespace BLL
             tablesT start = DB.tablesTs.FirstOrDefault(x => x.TableID == currentTableID);
             start.status = 0;
             DB.SubmitChanges();
+        }
+        public static Boolean IsExists(String tableName)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.tablesTs.Any(x => x.Name.Equals(tableName));
+        }
+        public static String AddTable(tablesT newTable)
+        {
+            string error = "";
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            if (IsExists(newTable.Name))
+                error += "Tên bàn đã tồn tại \n";
+            else
+            {
+                DB.tablesTs.InsertOnSubmit(newTable);
+                DB.SubmitChanges();
+            }
+            return error;
+        }
+        public static String EditTable(tablesT newTable)
+        {
+            string error = "";
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            tablesT old = DB.tablesTs.FirstOrDefault(x => x.TableID ==  newTable.TableID);
+            if(old.Name != newTable.Name)
+            {
+                if (IsExists(newTable.Name))
+                    error += "Tên bàn đã tồn tại \n";
+                else
+                    old.Name = newTable.Name;
+
+            }
+            old.Note = newTable.Note;
+            DB.SubmitChanges();
+            return error;
+        }
+
+        public static string RemoveTable(int tableID)
+        {
+            string error = "";
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            tablesT old = DB.tablesTs.FirstOrDefault(x => x.TableID ==  tableID);
+            if(old.status == 1)
+            {
+                error = "Bàn đang có khách \n";
+
+            }
+            else
+            {
+                old.ISDELETE = 1;
+                DB.SubmitChanges();
+                
+            }
+            return error;
+        }
+
+        public static string ActiveTable(int tableID)
+        {
+            string error = "";
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            tablesT old = DB.tablesTs.FirstOrDefault(x => x.TableID ==  tableID);
+            old.ISDELETE = 0;
+            DB.SubmitChanges();
+            return error;
         }
         #endregion
     }

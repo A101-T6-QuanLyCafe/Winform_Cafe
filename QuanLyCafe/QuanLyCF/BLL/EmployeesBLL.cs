@@ -310,6 +310,12 @@ namespace BLL
                 return false;
             }
         }
+
+        public static Employee Login(string username, string password)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Employees.FirstOrDefault(x => x.USERNAME.Equals(username) && x.PASSWORD.Equals(password));
+        }
         #endregion
     }
 }

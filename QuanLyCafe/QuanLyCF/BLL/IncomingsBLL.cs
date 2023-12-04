@@ -55,7 +55,7 @@ namespace BLL
         }
         public Incoming GetIncomingById(int incomingId)
         {
-            dbContext.Refresh(RefreshMode.OverwriteCurrentValues, dbContext.Incomings.FirstOrDefault(i => i.IncomingID == incomingId));
+            dbContext = new CoffeeShopDBDataContext();
             return dbContext.Incomings.FirstOrDefault(i => i.IncomingID == incomingId);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,12 @@ namespace Login_Page_Design_UI
 {
     public partial class FMain : Form
     {
-        public FMain()
+        Employee _employee;
+        public FMain(Employee emp)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+            _employee = emp;
         }
 
         private void FMain_Load(object sender, EventArgs e)
@@ -25,8 +28,8 @@ namespace Login_Page_Design_UI
 
         private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //fAccount fr = new fAccount();
-            //fr.ShowDialog();
+            MyAccount f = new MyAccount(_employee);
+            f.ShowDialog();
         }
 
         private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,7 +69,8 @@ namespace Login_Page_Design_UI
 
         private void quảnLíBànToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            TableManager tableManager = new TableManager();
+            tableManager.ShowDialog();
         }
 
         private void quảnLíNguyênViênToolStripMenuItem_Click(object sender, EventArgs e)

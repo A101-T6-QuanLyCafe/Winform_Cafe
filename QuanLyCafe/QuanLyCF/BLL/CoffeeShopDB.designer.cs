@@ -63,6 +63,12 @@ namespace BLL
     partial void InsertProduct(Product instance);
     partial void UpdateProduct(Product instance);
     partial void DeleteProduct(Product instance);
+    partial void InsertRecipe(Recipe instance);
+    partial void UpdateRecipe(Recipe instance);
+    partial void DeleteRecipe(Recipe instance);
+    partial void InsertRecipeInfo(RecipeInfo instance);
+    partial void UpdateRecipeInfo(RecipeInfo instance);
+    partial void DeleteRecipeInfo(RecipeInfo instance);
     partial void InsertScreen(Screen instance);
     partial void UpdateScreen(Screen instance);
     partial void DeleteScreen(Screen instance);
@@ -78,7 +84,7 @@ namespace BLL
     #endregion
 		
 		public CoffeeShopDBDataContext() : 
-				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString, mappingSource)
+				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -192,6 +198,22 @@ namespace BLL
 			get
 			{
 				return this.GetTable<Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Recipe> Recipes
+		{
+			get
+			{
+				return this.GetTable<Recipe>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RecipeInfo> RecipeInfos
+		{
+			get
+			{
+				return this.GetTable<RecipeInfo>();
 			}
 		}
 		
@@ -1379,11 +1401,17 @@ namespace BLL
 		
 		private System.Nullable<int> _quantity;
 		
+		private string _Unit;
+		
+		private System.Data.Linq.Binary _Photo;
+		
 		private System.Nullable<int> _TypeID;
 		
 		private int _ISDELETE;
 		
 		private EntitySet<Incomings_Detail> _Incomings_Details;
+		
+		private EntitySet<RecipeInfo> _RecipeInfos;
 		
 		private EntityRef<supplier> _supplier;
 		
@@ -1403,6 +1431,10 @@ namespace BLL
     partial void OnsupplieriDChanged();
     partial void OnquantityChanging(System.Nullable<int> value);
     partial void OnquantityChanged();
+    partial void OnUnitChanging(string value);
+    partial void OnUnitChanged();
+    partial void OnPhotoChanging(System.Data.Linq.Binary value);
+    partial void OnPhotoChanged();
     partial void OnTypeIDChanging(System.Nullable<int> value);
     partial void OnTypeIDChanged();
     partial void OnISDELETEChanging(int value);
@@ -1412,6 +1444,7 @@ namespace BLL
 		public material()
 		{
 			this._Incomings_Details = new EntitySet<Incomings_Detail>(new Action<Incomings_Detail>(this.attach_Incomings_Details), new Action<Incomings_Detail>(this.detach_Incomings_Details));
+			this._RecipeInfos = new EntitySet<RecipeInfo>(new Action<RecipeInfo>(this.attach_RecipeInfos), new Action<RecipeInfo>(this.detach_RecipeInfos));
 			this._supplier = default(EntityRef<supplier>);
 			this._TypeMaterial = default(EntityRef<TypeMaterial>);
 			OnCreated();
@@ -1521,6 +1554,46 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unit", DbType="VarChar(10)")]
+		public string Unit
+		{
+			get
+			{
+				return this._Unit;
+			}
+			set
+			{
+				if ((this._Unit != value))
+				{
+					this.OnUnitChanging(value);
+					this.SendPropertyChanging();
+					this._Unit = value;
+					this.SendPropertyChanged("Unit");
+					this.OnUnitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Photo
+		{
+			get
+			{
+				return this._Photo;
+			}
+			set
+			{
+				if ((this._Photo != value))
+				{
+					this.OnPhotoChanging(value);
+					this.SendPropertyChanging();
+					this._Photo = value;
+					this.SendPropertyChanged("Photo");
+					this.OnPhotoChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeID", DbType="Int")]
 		public System.Nullable<int> TypeID
 		{
@@ -1575,6 +1648,19 @@ namespace BLL
 			set
 			{
 				this._Incomings_Details.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="material_RecipeInfo", Storage="_RecipeInfos", ThisKey="Materials_ID", OtherKey="MaterialID")]
+		public EntitySet<RecipeInfo> RecipeInfos
+		{
+			get
+			{
+				return this._RecipeInfos;
+			}
+			set
+			{
+				this._RecipeInfos.Assign(value);
 			}
 		}
 		
@@ -1673,6 +1759,18 @@ namespace BLL
 		}
 		
 		private void detach_Incomings_Details(Incomings_Detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.material = null;
+		}
+		
+		private void attach_RecipeInfos(RecipeInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.material = this;
+		}
+		
+		private void detach_RecipeInfos(RecipeInfo entity)
 		{
 			this.SendPropertyChanging();
 			entity.material = null;
@@ -2561,6 +2659,10 @@ namespace BLL
 		
 		private int _ISDELETE;
 		
+		private System.Data.Linq.Binary _photo;
+		
+		private int _Craftable;
+		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
 		private EntityRef<typeProduct> _typeProduct;
@@ -2579,6 +2681,10 @@ namespace BLL
     partial void OntypeProductIDChanged();
     partial void OnISDELETEChanging(int value);
     partial void OnISDELETEChanged();
+    partial void OnphotoChanging(System.Data.Linq.Binary value);
+    partial void OnphotoChanged();
+    partial void OnCraftableChanging(int value);
+    partial void OnCraftableChanged();
     #endregion
 		
 		public Product()
@@ -2692,6 +2798,46 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_photo", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary photo
+		{
+			get
+			{
+				return this._photo;
+			}
+			set
+			{
+				if ((this._photo != value))
+				{
+					this.OnphotoChanging(value);
+					this.SendPropertyChanging();
+					this._photo = value;
+					this.SendPropertyChanged("photo");
+					this.OnphotoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Craftable", DbType="Int NOT NULL")]
+		public int Craftable
+		{
+			get
+			{
+				return this._Craftable;
+			}
+			set
+			{
+				if ((this._Craftable != value))
+				{
+					this.OnCraftableChanging(value);
+					this.SendPropertyChanging();
+					this._Craftable = value;
+					this.SendPropertyChanged("Craftable");
+					this.OnCraftableChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_OrderDetail", Storage="_OrderDetails", ThisKey="ProductID", OtherKey="ProductID")]
 		public EntitySet<OrderDetail> OrderDetails
 		{
@@ -2769,6 +2915,336 @@ namespace BLL
 		{
 			this.SendPropertyChanging();
 			entity.Product = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Recipe")]
+	public partial class Recipe : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RecipeID;
+		
+		private System.Nullable<int> _ProductID;
+		
+		private EntitySet<RecipeInfo> _RecipeInfos;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRecipeIDChanging(int value);
+    partial void OnRecipeIDChanged();
+    partial void OnProductIDChanging(System.Nullable<int> value);
+    partial void OnProductIDChanged();
+    #endregion
+		
+		public Recipe()
+		{
+			this._RecipeInfos = new EntitySet<RecipeInfo>(new Action<RecipeInfo>(this.attach_RecipeInfos), new Action<RecipeInfo>(this.detach_RecipeInfos));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RecipeID
+		{
+			get
+			{
+				return this._RecipeID;
+			}
+			set
+			{
+				if ((this._RecipeID != value))
+				{
+					this.OnRecipeIDChanging(value);
+					this.SendPropertyChanging();
+					this._RecipeID = value;
+					this.SendPropertyChanged("RecipeID");
+					this.OnRecipeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int")]
+		public System.Nullable<int> ProductID
+		{
+			get
+			{
+				return this._ProductID;
+			}
+			set
+			{
+				if ((this._ProductID != value))
+				{
+					this.OnProductIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Recipe_RecipeInfo", Storage="_RecipeInfos", ThisKey="RecipeID", OtherKey="RecipeID")]
+		public EntitySet<RecipeInfo> RecipeInfos
+		{
+			get
+			{
+				return this._RecipeInfos;
+			}
+			set
+			{
+				this._RecipeInfos.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_RecipeInfos(RecipeInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Recipe = this;
+		}
+		
+		private void detach_RecipeInfos(RecipeInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.Recipe = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RecipeInfo")]
+	public partial class RecipeInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RecipeInfoID;
+		
+		private System.Nullable<int> _RecipeID;
+		
+		private System.Nullable<int> _MaterialID;
+		
+		private int _Quantity;
+		
+		private EntityRef<material> _material;
+		
+		private EntityRef<Recipe> _Recipe;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRecipeInfoIDChanging(int value);
+    partial void OnRecipeInfoIDChanged();
+    partial void OnRecipeIDChanging(System.Nullable<int> value);
+    partial void OnRecipeIDChanged();
+    partial void OnMaterialIDChanging(System.Nullable<int> value);
+    partial void OnMaterialIDChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    #endregion
+		
+		public RecipeInfo()
+		{
+			this._material = default(EntityRef<material>);
+			this._Recipe = default(EntityRef<Recipe>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipeInfoID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RecipeInfoID
+		{
+			get
+			{
+				return this._RecipeInfoID;
+			}
+			set
+			{
+				if ((this._RecipeInfoID != value))
+				{
+					this.OnRecipeInfoIDChanging(value);
+					this.SendPropertyChanging();
+					this._RecipeInfoID = value;
+					this.SendPropertyChanged("RecipeInfoID");
+					this.OnRecipeInfoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipeID", DbType="Int")]
+		public System.Nullable<int> RecipeID
+		{
+			get
+			{
+				return this._RecipeID;
+			}
+			set
+			{
+				if ((this._RecipeID != value))
+				{
+					if (this._Recipe.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRecipeIDChanging(value);
+					this.SendPropertyChanging();
+					this._RecipeID = value;
+					this.SendPropertyChanged("RecipeID");
+					this.OnRecipeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterialID", DbType="Int")]
+		public System.Nullable<int> MaterialID
+		{
+			get
+			{
+				return this._MaterialID;
+			}
+			set
+			{
+				if ((this._MaterialID != value))
+				{
+					if (this._material.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaterialIDChanging(value);
+					this.SendPropertyChanging();
+					this._MaterialID = value;
+					this.SendPropertyChanged("MaterialID");
+					this.OnMaterialIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="material_RecipeInfo", Storage="_material", ThisKey="MaterialID", OtherKey="Materials_ID", IsForeignKey=true)]
+		public material material
+		{
+			get
+			{
+				return this._material.Entity;
+			}
+			set
+			{
+				material previousValue = this._material.Entity;
+				if (((previousValue != value) 
+							|| (this._material.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._material.Entity = null;
+						previousValue.RecipeInfos.Remove(this);
+					}
+					this._material.Entity = value;
+					if ((value != null))
+					{
+						value.RecipeInfos.Add(this);
+						this._MaterialID = value.Materials_ID;
+					}
+					else
+					{
+						this._MaterialID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("material");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Recipe_RecipeInfo", Storage="_Recipe", ThisKey="RecipeID", OtherKey="RecipeID", IsForeignKey=true)]
+		public Recipe Recipe
+		{
+			get
+			{
+				return this._Recipe.Entity;
+			}
+			set
+			{
+				Recipe previousValue = this._Recipe.Entity;
+				if (((previousValue != value) 
+							|| (this._Recipe.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Recipe.Entity = null;
+						previousValue.RecipeInfos.Remove(this);
+					}
+					this._Recipe.Entity = value;
+					if ((value != null))
+					{
+						value.RecipeInfos.Add(this);
+						this._RecipeID = value.RecipeID;
+					}
+					else
+					{
+						this._RecipeID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Recipe");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -3104,6 +3580,10 @@ namespace BLL
 		
 		private int _TableID;
 		
+		private string _Name;
+		
+		private string _Note;
+		
 		private int _ISDELETE;
 		
 		private int _status;
@@ -3116,6 +3596,10 @@ namespace BLL
     partial void OnCreated();
     partial void OnTableIDChanging(int value);
     partial void OnTableIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnNoteChanging(string value);
+    partial void OnNoteChanged();
     partial void OnISDELETEChanging(int value);
     partial void OnISDELETEChanged();
     partial void OnstatusChanging(int value);
@@ -3144,6 +3628,46 @@ namespace BLL
 					this._TableID = value;
 					this.SendPropertyChanged("TableID");
 					this.OnTableIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(20)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(100)")]
+		public string Note
+		{
+			get
+			{
+				return this._Note;
+			}
+			set
+			{
+				if ((this._Note != value))
+				{
+					this.OnNoteChanging(value);
+					this.SendPropertyChanging();
+					this._Note = value;
+					this.SendPropertyChanged("Note");
+					this.OnNoteChanged();
 				}
 			}
 		}
