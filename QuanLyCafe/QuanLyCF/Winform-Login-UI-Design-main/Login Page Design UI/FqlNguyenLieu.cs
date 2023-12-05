@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq.Mapping;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -21,6 +22,7 @@ namespace Login_Page_Design_UI
         public FqlNguyenLieu()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void FqlNguyenLieu_Load(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace Login_Page_Design_UI
         }
         public void loadNL()
         {
-            dtgNL.DataSource = materialsBLL.GetMaterialsNotISdelete();
+            dtgNL.DataSource = materialsBLL.GetAllMaterials();
         }
         public void loadcbo()
         {
@@ -48,40 +50,55 @@ namespace Login_Page_Design_UI
 
         private void dtgNL_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtID.Text = dtgNL.CurrentRow.Cells[0].Value.ToString();
-            txtTen.Text= dtgNL.CurrentRow.Cells[0].Value.ToString();
-            txtGia.Text= dtgNL.CurrentRow.Cells[0].Value.ToString(); 
-            cboNCC.SelectedText= dtgNL.CurrentRow.Cells[0].Value.ToString();
-            txtSL.Text= dtgNL.CurrentRow.Cells[0].Value.ToString();
-            cboLoai.SelectedText= dtgNL.CurrentRow.Cells[0].Value.ToString();
-            if (int.Parse(dtgNL.CurrentRow.Cells[0].Value.ToString()) == 1)
-            {
-                ckISdelete.Checked = true;
-            }
-            else
-            {
-                ckISdelete.Checked = false;
-            }
+           
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            material newMaterial = new material {
-                Materials_Name = txtTen.Text,
-                quantity=int.Parse(txtSL.Text),
-                TypeID=int.Parse(cboLoai.SelectedValue.ToString()),
-                supplieriD=int.Parse(cboNCC.SelectedValue.ToString())
-            };
-            try
+            if (txtTen.Text.Length == 0)
             {
-                materialsBLL.AddMaterial(newMaterial);
-                MessageBox.Show("thanh cong");
-                loadNL();
+                MessageBox.Show("Vui lòng nhập tên nguyên liệu");
+                txtTen.Focus();
             }
-            catch (Exception)
+            else if (txtDVT.Text.Length == 0)
             {
+                MessageBox.Show("Vui lòng nhập đơn vị tính");
+                txtDVT.Focus();
+            }
+            else if (txtGia.Text.Length == 0)
+            {
+                MessageBox.Show("Vui lòng nhập giá nhập");
+                txtGia.Focus();
+            }
+            else if (txtSL.Text.Length == 0)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng");
+                txtSL.Focus();
+            }
+            else
+            {
+                material newMaterial = new material
+                {
 
-                MessageBox.Show("that bai");
+                    Materials_Name = txtTen.Text,
+                    quantity = int.Parse(txtSL.Text),
+                    TypeID = int.Parse(cboLoai.SelectedValue.ToString()),
+                    supplieriD = int.Parse(cboNCC.SelectedValue.ToString()),
+                    Price = float.Parse(txtGia.Text.Trim()),
+                    Unit = txtDVT.Text.Trim(),
+                    ISDELETE = 0
+                };
+                try
+                {
+                    materialsBLL.AddMaterial(newMaterial);
+                    MessageBox.Show("thanh cong");
+                    loadNL();
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("that bai");
+                }
             }
        
         }
@@ -95,6 +112,8 @@ namespace Login_Page_Design_UI
                 quantity = int.Parse(txtSL.Text),
                 TypeID = int.Parse(cboLoai.SelectedValue.ToString()),
                 supplieriD = int.Parse(cboNCC.SelectedValue.ToString()),
+                Price=float.Parse(txtGia.Text.Trim()),
+                Unit= txtDVT.Text.Trim(),
                 ISDELETE = 1
             };
             try
@@ -119,7 +138,56 @@ namespace Login_Page_Design_UI
                 quantity = int.Parse(txtSL.Text),
                 TypeID = int.Parse(cboLoai.SelectedValue.ToString()),
                 supplieriD = int.Parse(cboNCC.SelectedValue.ToString()),
+                Price = float.Parse(txtGia.Text.Trim()),
+                Unit = txtDVT.Text.Trim(),
                
+
+            };
+            try
+            {
+                materialsBLL.UpdateMaterial(newMaterial);
+                MessageBox.Show("thanh cong");
+                loadNL();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("that bai");
+            }
+        }
+
+        private void dtgNL_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtID.Text = dtgNL.CurrentRow.Cells[0].Value.ToString();
+            txtTen.Text = dtgNL.CurrentRow.Cells[1].Value.ToString();
+            txtGia.Text = dtgNL.CurrentRow.Cells[2].Value.ToString();
+            cboNCC.SelectedValue = dtgNL.CurrentRow.Cells[3].Value;
+            txtSL.Text = dtgNL.CurrentRow.Cells[4].Value.ToString();
+            txtDVT.Text = dtgNL.CurrentRow.Cells[5].Value.ToString();
+            cboLoai.SelectedValue = dtgNL.CurrentRow.Cells[6].Value;
+            
+        }
+
+        private void ckISdelete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckISdelete.Checked)
+            {
+                dtgNL.DataSource = materialsBLL.GetMaterialsISdelete();
+            }
+        }
+
+        private void btnMoBan_Click(object sender, EventArgs e)
+        {
+            material newMaterial = new material
+            {
+                Materials_ID = int.Parse(txtID.Text),
+                Materials_Name = txtTen.Text,
+                quantity = int.Parse(txtSL.Text),
+                TypeID = int.Parse(cboLoai.SelectedValue.ToString()),
+                supplieriD = int.Parse(cboNCC.SelectedValue.ToString()),
+                Price = float.Parse(txtGia.Text.Trim()),
+                Unit = txtDVT.Text.Trim(),
+                ISDELETE = 0
             };
             try
             {

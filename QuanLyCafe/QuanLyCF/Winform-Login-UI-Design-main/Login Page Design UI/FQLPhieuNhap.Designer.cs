@@ -55,7 +55,7 @@
             // dtgPN
             // 
             this.dtgPN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgPN.Location = new System.Drawing.Point(0, 331);
+            this.dtgPN.Location = new System.Drawing.Point(3, 331);
             this.dtgPN.Name = "dtgPN";
             this.dtgPN.RowHeadersWidth = 51;
             this.dtgPN.RowTemplate.Height = 24;
@@ -69,7 +69,7 @@
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(147, 29);
             this.btnCapNhat.TabIndex = 12;
-            this.btnCapNhat.Text = "cập nhật";
+            this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
@@ -79,7 +79,7 @@
             this.btnUpdateAll.Name = "btnUpdateAll";
             this.btnUpdateAll.Size = new System.Drawing.Size(147, 29);
             this.btnUpdateAll.TabIndex = 14;
-            this.btnUpdateAll.Text = "cập nhật tất cả";
+            this.btnUpdateAll.Text = "Cập nhật tất cả";
             this.btnUpdateAll.UseVisualStyleBackColor = true;
             this.btnUpdateAll.Click += new System.EventHandler(this.btnUpdateAll_Click);
             // 
@@ -92,9 +92,9 @@
             this.panel1.Controls.Add(this.dtpNgayLap);
             this.panel1.Controls.Add(this.txtNV);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(0, 136);
+            this.panel1.Location = new System.Drawing.Point(5, 136);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1062, 124);
+            this.panel1.Size = new System.Drawing.Size(1057, 124);
             this.panel1.TabIndex = 17;
             // 
             // textBox1
@@ -107,7 +107,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(96, 82);
+            this.label7.Location = new System.Drawing.Point(89, 82);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 16);
             this.label7.TabIndex = 21;
@@ -116,11 +116,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(662, 40);
+            this.label6.Location = new System.Drawing.Point(679, 35);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 16);
+            this.label6.Size = new System.Drawing.Size(62, 16);
             this.label6.TabIndex = 20;
-            this.label6.Text = "ngày lập";
+            this.label6.Text = "Ngày lập";
             // 
             // dtpNgayLap
             // 
@@ -139,7 +139,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 35);
+            this.label3.Location = new System.Drawing.Point(89, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 16);
             this.label3.TabIndex = 17;
@@ -171,11 +171,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(660, 85);
+            this.label5.Location = new System.Drawing.Point(683, 85);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 16);
+            this.label5.Size = new System.Drawing.Size(90, 16);
             this.label5.TabIndex = 18;
-            this.label5.Text = "tổng công nợ";
+            this.label5.Text = "Tổng công nợ";
             // 
             // txtTongTien
             // 
@@ -187,7 +187,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(660, 26);
+            this.label4.Location = new System.Drawing.Point(683, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 16);
             this.label4.TabIndex = 16;
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 673);
+            this.ClientSize = new System.Drawing.Size(1069, 679);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnUpdateAll);

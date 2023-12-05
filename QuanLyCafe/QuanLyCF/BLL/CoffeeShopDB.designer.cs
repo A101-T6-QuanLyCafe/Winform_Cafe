@@ -84,7 +84,7 @@ namespace BLL
     #endregion
 		
 		public CoffeeShopDBDataContext() : 
-				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString1, mappingSource)
+				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -3652,7 +3652,7 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Note", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string Note
 		{
 			get

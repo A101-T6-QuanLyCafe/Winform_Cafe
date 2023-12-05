@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace BLL
 {
     public class MaterialsBLL
@@ -13,10 +13,44 @@ namespace BLL
 
        
         // Phương thức để lấy tất cả dữ liệu từ bảng materials
-        public List<material> GetAllMaterials()
+        public  DataTable GetAllMaterials()
         {
-            return db.materials.ToList();
-        }
+            try
+            {
+                var materialsQuery = from material in db.materials
+                                     where material.ISDELETE == 0
+                                     select material;
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Mã nguyên liệu", typeof(int));
+                dataTable.Columns.Add("Tên nguyên liệu", typeof(string));
+                dataTable.Columns.Add("Giá", typeof(float));
+                dataTable.Columns.Add("Mã nhà cung cấp", typeof(int));
+                dataTable.Columns.Add("Số lượng tồn", typeof(int));
+                dataTable.Columns.Add("Đơn vị", typeof(string));
+                dataTable.Columns.Add("Mã loại", typeof(int));
+
+                foreach (var material in materialsQuery)
+                {
+                    dataTable.Rows.Add(
+                        material.Materials_ID,
+                        material.Materials_Name,
+                        material.Price,
+                        material.supplieriD,
+                        material.quantity,
+                        material.Unit,
+                        material.TypeID
+                    );
+                }
+
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+            
+            }
 
         // Phương thức để thêm mới một đối tượng materials
         public void AddMaterial(material newMaterial)
@@ -44,7 +78,8 @@ namespace BLL
                     existingMaterial.supplieriD = updatedMaterial.supplieriD;
                     existingMaterial.quantity = updatedMaterial.quantity;
                     existingMaterial.TypeID = updatedMaterial.TypeID;
-
+                    existingMaterial.Unit = updatedMaterial.Unit;
+                    existingMaterial.ISDELETE = updatedMaterial.ISDELETE;
                     db.SubmitChanges();
                 }
             }
@@ -61,9 +96,42 @@ namespace BLL
                 db.SubmitChanges();
             }
         }
-        public List<material> GetMaterialsBySupplierID(int supplierID)
+        public DataTable GetMaterialsBySupplierID(int supplierID)
         {
-            return db.materials.Where(m => m.supplieriD == supplierID && m.ISDELETE == 0).ToList();
+            
+            try
+            {
+                var materialsQuery = db.materials.Where(m => m.supplieriD == supplierID && m.ISDELETE == 0).ToList();
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Mã nguyên liệu", typeof(int));
+                dataTable.Columns.Add("Tên nguyên liệu", typeof(string));
+                dataTable.Columns.Add("Giá", typeof(float));
+                dataTable.Columns.Add("Mã nhà cung cấp", typeof(int));
+                dataTable.Columns.Add("Số lượng tồn", typeof(int));
+                dataTable.Columns.Add("Đơn vị", typeof(string));
+                dataTable.Columns.Add("Mã loại", typeof(int));
+
+                foreach (var material in materialsQuery)
+                {
+                    dataTable.Rows.Add(
+                        material.Materials_ID,
+                        material.Materials_Name,
+                        material.Price,
+                        material.supplieriD,
+                        material.quantity,
+                        material.Unit,
+                        material.TypeID
+                    );
+                }
+
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+        
         }
         public List<material> FuzzySearchMaterialsByName(string searchString)
         {
@@ -85,9 +153,42 @@ namespace BLL
         {
             return db.materials.Where(m => m.ISDELETE == 0).ToList();
         }
-        public List<material> GetMaterialsISdelete()
+        public DataTable GetMaterialsISdelete()
         {
-            return db.materials.Where(m => m.ISDELETE == 1).ToList();
+            try
+            {
+                var materialsQuery = from material in db.materials
+                                     where material.ISDELETE == 1
+                                     select material;
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Mã nguyên liệu", typeof(int));
+                dataTable.Columns.Add("Tên nguyên liệu", typeof(string));
+                dataTable.Columns.Add("Giá", typeof(float));
+                dataTable.Columns.Add("Mã nhà cung cấp", typeof(int));
+                dataTable.Columns.Add("Số lượng tồn", typeof(int));
+                dataTable.Columns.Add("Đơn vị", typeof(string));
+                dataTable.Columns.Add("Mã loại", typeof(int));
+
+                foreach (var material in materialsQuery)
+                {
+                    dataTable.Rows.Add(
+                        material.Materials_ID,
+                        material.Materials_Name,
+                        material.Price,
+                        material.supplieriD,
+                        material.quantity,
+                        material.Unit,
+                        material.TypeID
+                    );
+                }
+
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
     }
 }

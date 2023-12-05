@@ -25,6 +25,7 @@ namespace Login_Page_Design_UI
         public FNhapHang()
         {
             InitializeComponent();
+            this.StartPosition= FormStartPosition.CenterScreen;
         }
 
         private void FNhapHang_Load(object sender, EventArgs e)
@@ -190,6 +191,21 @@ namespace Login_Page_Design_UI
             {
                 LoadNL();
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgGioHang_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
+
+        private void dtgGioHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

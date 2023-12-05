@@ -21,6 +21,7 @@ namespace Login_Page_Design_UI
 
         private void btnTK_Click(object sender, EventArgs e)
         {
+            if (dtpBD.Value > dtpKT.Value || dtpKT.Value<dtpBD.Value) { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc !!"); }
             dataGridView1.DataSource = ordersBLL.GetOrdersByDateRange(dtpBD.Value, dtpKT.Value);
 
             float doanhthu = 0;

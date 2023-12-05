@@ -69,7 +69,7 @@
             this.btnTK.Name = "btnTK";
             this.btnTK.Size = new System.Drawing.Size(120, 33);
             this.btnTK.TabIndex = 3;
-            this.btnTK.Text = "thống kê";
+            this.btnTK.Text = "Thống kê";
             this.btnTK.UseVisualStyleBackColor = true;
             this.btnTK.Click += new System.EventHandler(this.btnTK_Click);
             // 
@@ -87,9 +87,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(696, 642);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 16);
+            this.label1.Size = new System.Drawing.Size(100, 16);
             this.label1.TabIndex = 5;
-            this.label1.Text = "tổng doanh thu";
+            this.label1.Text = "Tổng doanh thu";
             // 
             // label2
             // 
