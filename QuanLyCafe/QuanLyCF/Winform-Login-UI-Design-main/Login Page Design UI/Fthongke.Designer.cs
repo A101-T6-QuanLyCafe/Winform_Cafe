@@ -42,32 +42,32 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 138);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 82);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(783, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(1062, 524);
             this.dataGridView1.TabIndex = 0;
             // 
             // dtpBD
             // 
-            this.dtpBD.Location = new System.Drawing.Point(83, 32);
+            this.dtpBD.Location = new System.Drawing.Point(133, 12);
             this.dtpBD.Name = "dtpBD";
             this.dtpBD.Size = new System.Drawing.Size(200, 22);
             this.dtpBD.TabIndex = 1;
             // 
             // dtpKT
             // 
-            this.dtpKT.Location = new System.Drawing.Point(378, 32);
+            this.dtpKT.Location = new System.Drawing.Point(850, 12);
             this.dtpKT.Name = "dtpKT";
             this.dtpKT.Size = new System.Drawing.Size(200, 22);
             this.dtpKT.TabIndex = 2;
             // 
             // btnTK
             // 
-            this.btnTK.Location = new System.Drawing.Point(642, 31);
+            this.btnTK.Location = new System.Drawing.Point(481, 15);
             this.btnTK.Name = "btnTK";
-            this.btnTK.Size = new System.Drawing.Size(120, 23);
+            this.btnTK.Size = new System.Drawing.Size(120, 33);
             this.btnTK.TabIndex = 3;
             this.btnTK.Text = "thống kê";
             this.btnTK.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             // txtTongDoanhThu
             // 
             this.txtTongDoanhThu.Enabled = false;
-            this.txtTongDoanhThu.Location = new System.Drawing.Point(284, 87);
+            this.txtTongDoanhThu.Location = new System.Drawing.Point(799, 639);
             this.txtTongDoanhThu.Name = "txtTongDoanhThu";
             this.txtTongDoanhThu.Size = new System.Drawing.Size(100, 22);
             this.txtTongDoanhThu.TabIndex = 4;
@@ -85,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(181, 90);
+            this.label1.Location = new System.Drawing.Point(696, 642);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 16);
             this.label1.TabIndex = 5;
@@ -94,26 +94,26 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 38);
+            this.label2.Location = new System.Drawing.Point(23, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.Size = new System.Drawing.Size(88, 16);
             this.label2.TabIndex = 6;
-            this.label2.Text = "ngày bắt đầu";
+            this.label2.Text = "Ngày bắt đầu";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(328, 38);
+            this.label3.Location = new System.Drawing.Point(743, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.Size = new System.Drawing.Size(88, 16);
             this.label3.TabIndex = 7;
-            this.label3.Text = "ngày kT";
+            this.label3.Text = "Ngày kết thúc";
             // 
             // Fthongke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1062, 673);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

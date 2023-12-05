@@ -30,6 +30,9 @@
         {
             this.dtg_NguyenLieu = new System.Windows.Forms.DataGridView();
             this.dtgGioHang = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnTaoHD = new System.Windows.Forms.Button();
@@ -52,9 +55,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
             this.numSL = new System.Windows.Forms.NumericUpDown();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNV = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_NguyenLieu)).BeginInit();
@@ -88,6 +88,27 @@
             this.dtgGioHang.RowTemplate.Height = 24;
             this.dtgGioHang.Size = new System.Drawing.Size(533, 264);
             this.dtgGioHang.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "id";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "name";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "quantity";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
             // 
             // btnThem
             // 
@@ -281,27 +302,6 @@
             this.numSL.Size = new System.Drawing.Size(73, 22);
             this.numSL.TabIndex = 24;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "id";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "name";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "quantity";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -323,7 +323,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 639);
+            this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtNV);
             this.Controls.Add(this.numSL);

@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_showPassword = new System.Windows.Forms.Button();
             this.txt_username = new System.Windows.Forms.TextBox();
             this.cb_remember = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_login = new System.Windows.Forms.Button();
             this.txt_password = new System.Windows.Forms.TextBox();
-            this.btn_showPassword = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btn_showPassword);
             this.panel2.Controls.Add(this.txt_username);
             this.panel2.Controls.Add(this.cb_remember);
@@ -66,6 +67,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(502, 369);
             this.panel2.TabIndex = 8;
+            // 
+            // btn_showPassword
+            // 
+            this.btn_showPassword.Location = new System.Drawing.Point(387, 123);
+            this.btn_showPassword.Name = "btn_showPassword";
+            this.btn_showPassword.Size = new System.Drawing.Size(28, 27);
+            this.btn_showPassword.TabIndex = 7;
+            this.btn_showPassword.Text = "O";
+            this.btn_showPassword.UseVisualStyleBackColor = true;
+            this.btn_showPassword.Click += new System.EventHandler(this.btn_showPassword_Click);
             // 
             // txt_username
             // 
@@ -128,16 +139,6 @@
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(181, 22);
             this.txt_password.TabIndex = 3;
-            // 
-            // btn_showPassword
-            // 
-            this.btn_showPassword.Location = new System.Drawing.Point(387, 123);
-            this.btn_showPassword.Name = "btn_showPassword";
-            this.btn_showPassword.Size = new System.Drawing.Size(28, 27);
-            this.btn_showPassword.TabIndex = 7;
-            this.btn_showPassword.Text = "O";
-            this.btn_showPassword.UseVisualStyleBackColor = true;
-            this.btn_showPassword.Click += new System.EventHandler(this.btn_showPassword_Click);
             // 
             // Login
             // 

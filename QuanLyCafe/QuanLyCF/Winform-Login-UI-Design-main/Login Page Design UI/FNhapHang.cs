@@ -16,9 +16,7 @@ namespace Login_Page_Design_UI
 {
     public partial class FNhapHang : Form
     {
-        CoffeeShopDBDataContext dbcontext=new CoffeeShopDBDataContext();
         MaterialsBLL materialsBLL = new MaterialsBLL();
-        TypeMaterialsBLL typeMaterialsBLL = new TypeMaterialsBLL();
         IncomingsBLL incomingsBLL = new IncomingsBLL();
         IncomingsDetailBLL incomingsDetailBLL = new IncomingsDetailBLL();
         SupplierBLL supplierBLL = new SupplierBLL();
@@ -33,13 +31,6 @@ namespace Login_Page_Design_UI
         {
             LoadNL();
             loadNCC();
-            Incoming incoming = incomingsBLL.GetIncomingById(8);
-
-
-            txtMaPNN.Text = incoming.IncomingID.ToString();
-            txtGiaNhap.Text = incoming.total_Price.ToString();
-            txtDaTra.Text = incoming.amount_paid.ToString();
-           
         }
         public void LoadNL()
         {

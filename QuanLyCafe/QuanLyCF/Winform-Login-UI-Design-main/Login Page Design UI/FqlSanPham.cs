@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,28 +22,10 @@ namespace Login_Page_Design_UI
             InitializeComponent();
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            Product newProduct = new Product {
-                ProductName = txtTebSP.Text,
-                typeProductID = int.Parse(cboLoai.SelectedValue.ToString()),
-                Price = float.Parse(txtGia.Text),
-            };
-            try
-            {
-                productsBLL.insert(newProduct);
-                MessageBox.Show("thanh cong");
-                LoadProduct();
-            }
-            catch (Exception)
-            {
 
-                MessageBox.Show("that bai");
-            }
-        }
         public void LoadProduct()
         {
-            dtgSanpham.DataSource = productsBLL.getAllProducts();
+            dtgSanpham.DataSource = productsBLL.getAllProducts().Select(x => new {x.ProductID, x.ProductName, x.Price, x.typeProductID }).ToList();
         }
         public void loadcbo()
         {
@@ -59,18 +42,8 @@ namespace Login_Page_Design_UI
 
         private void dtgSanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtID.Text = dtgSanpham.CurrentRow.Cells[0].Value.ToString();
-            txtTebSP.Text = dtgSanpham.CurrentRow.Cells[1].Value.ToString(); 
-            txtGia.Text = dtgSanpham.CurrentRow.Cells[2].Value.ToString();
-            cboLoai.SelectedItem = dtgSanpham.CurrentRow.Cells[3].Value.ToString();
-            if (int.Parse(dtgSanpham.CurrentRow.Cells[4].Value.ToString()) == 1)
-            {
-                ckIsdelete.Checked = true;
-            }
-            else
-            {
-                ckIsdelete.Checked=false;
-            }
+            
+            
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -81,6 +54,7 @@ namespace Login_Page_Design_UI
                 ProductName = txtTebSP.Text,
                 typeProductID = int.Parse(cboLoai.SelectedValue.ToString()),
                 Price = float.Parse(txtGia.Text),
+                photo = getPhoto()
             };
             try
             {
@@ -136,6 +110,65 @@ namespace Login_Page_Design_UI
 
                 MessageBox.Show("that bai");
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = new Bitmap(openFile.FileName);
+            }
+        }
+
+        private void dtgSanpham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int productID = int.Parse(dtgSanpham.CurrentRow.Cells[0].Value.ToString());
+            Product pd = ProductsBLL.GetProductByID(productID);
+            txtID.Text = pd.ProductID.ToString();
+            txtTebSP.Text = pd.ProductName;
+            txtGia.Text = pd.Price.ToString();
+            cboLoai.SelectedValue = pd.typeProductID;
+            if (pd.photo != null)
+            {
+                Byte[] data = pd.photo.ToArray();
+                MemoryStream mem = new MemoryStream(data);
+                pictureBox1.Image = Image.FromStream(mem);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            Product newProduct = new Product
+            {
+                ProductName = txtTebSP.Text,
+                typeProductID = int.Parse(cboLoai.SelectedValue.ToString()),
+                Price = float.Parse(txtGia.Text),
+                photo = getPhoto()
+            };
+            try
+            {
+                productsBLL.insert(newProduct);
+                MessageBox.Show("thanh cong");
+                LoadProduct();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("that bai");
+            }
+        }
+
+        private byte[] getPhoto()
+        {
+            MemoryStream stream = new MemoryStream();
+            pictureBox1.Image.Save(stream, pictureBox1.Image.RawFormat);
+            return stream.GetBuffer();
         }
     }
 }

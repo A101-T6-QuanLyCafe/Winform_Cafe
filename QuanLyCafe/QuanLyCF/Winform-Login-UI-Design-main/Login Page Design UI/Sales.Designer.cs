@@ -54,6 +54,7 @@
             // 
             // Table_panel
             // 
+            this.Table_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Table_panel.Location = new System.Drawing.Point(3, 3);
             this.Table_panel.Name = "Table_panel";
             this.Table_panel.Size = new System.Drawing.Size(523, 667);

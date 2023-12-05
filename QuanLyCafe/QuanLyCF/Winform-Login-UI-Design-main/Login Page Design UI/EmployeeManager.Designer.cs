@@ -61,6 +61,14 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.empID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PHONE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -185,7 +193,7 @@
             // 
             this.rtxt_phone.Location = new System.Drawing.Point(820, 89);
             this.rtxt_phone.Name = "rtxt_phone";
-            this.rtxt_phone.Size = new System.Drawing.Size(196, 22);
+            this.rtxt_phone.Size = new System.Drawing.Size(203, 22);
             this.rtxt_phone.TabIndex = 69;
             // 
             // etxt_email
@@ -324,6 +332,7 @@
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.rtxt_lastName);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.btn_active);
@@ -350,12 +359,22 @@
             this.panel3.Controls.Add(this.label5);
             this.panel3.Location = new System.Drawing.Point(3, 68);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1062, 285);
+            this.panel3.Size = new System.Drawing.Size(1056, 285);
             this.panel3.TabIndex = 1;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.empID,
+            this.FName,
+            this.LastName,
+            this.EMAIL,
+            this.PHONE,
+            this.USERNAME,
+            this.DOB,
+            this.SEX});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -382,6 +401,62 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1062, 673);
             this.panel1.TabIndex = 1;
+            // 
+            // empID
+            // 
+            this.empID.DataPropertyName = "EmployeeID";
+            this.empID.HeaderText = "Mã nhân viên";
+            this.empID.MinimumWidth = 6;
+            this.empID.Name = "empID";
+            // 
+            // FName
+            // 
+            this.FName.DataPropertyName = "FirstName";
+            this.FName.HeaderText = "Họ";
+            this.FName.MinimumWidth = 6;
+            this.FName.Name = "FName";
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Tên";
+            this.LastName.MinimumWidth = 6;
+            this.LastName.Name = "LastName";
+            // 
+            // EMAIL
+            // 
+            this.EMAIL.DataPropertyName = "EMAIL";
+            this.EMAIL.HeaderText = "Email";
+            this.EMAIL.MinimumWidth = 6;
+            this.EMAIL.Name = "EMAIL";
+            // 
+            // PHONE
+            // 
+            this.PHONE.DataPropertyName = "PHONE";
+            this.PHONE.HeaderText = "Điện thoại";
+            this.PHONE.MinimumWidth = 6;
+            this.PHONE.Name = "PHONE";
+            // 
+            // USERNAME
+            // 
+            this.USERNAME.DataPropertyName = "USERNAME";
+            this.USERNAME.HeaderText = "Tên đăng nhập";
+            this.USERNAME.MinimumWidth = 6;
+            this.USERNAME.Name = "USERNAME";
+            // 
+            // DOB
+            // 
+            this.DOB.DataPropertyName = "DOB";
+            this.DOB.HeaderText = "Ngày sinh";
+            this.DOB.MinimumWidth = 6;
+            this.DOB.Name = "DOB";
+            // 
+            // SEX
+            // 
+            this.SEX.DataPropertyName = "SEX";
+            this.SEX.HeaderText = "Giới tính";
+            this.SEX.MinimumWidth = 6;
+            this.SEX.Name = "SEX";
             // 
             // EmployeeManager
             // 
@@ -438,5 +513,13 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PHONE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USERNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DOB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SEX;
     }
 }

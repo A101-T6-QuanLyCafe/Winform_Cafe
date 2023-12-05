@@ -15,11 +15,13 @@ namespace Login_Page_Design_UI
     {
         public TableManager()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
         private void TableManager_Load(object sender, EventArgs e)
         {
+            
             loadDatagridView();
             btn_active.Enabled = cb_isDelete.Checked;
 

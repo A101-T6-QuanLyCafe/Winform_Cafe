@@ -39,8 +39,8 @@
             this.quảnLíNguyênViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phânQuyênfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLíPhiếuNhậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.côngThứcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,6 +135,12 @@
             this.quảnLíPhiếuNhậpToolStripMenuItem.Text = "Quản lí phiếu nhập";
             this.quảnLíPhiếuNhậpToolStripMenuItem.Click += new System.EventHandler(this.quảnLíPhiếuNhậpToolStripMenuItem_Click);
             // 
+            // côngThứcToolStripMenuItem
+            // 
+            this.côngThứcToolStripMenuItem.Name = "côngThứcToolStripMenuItem";
+            this.côngThứcToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.côngThứcToolStripMenuItem.Text = "Công Thức";
+            // 
             // thốngKêToolStripMenuItem
             // 
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
@@ -142,18 +148,13 @@
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
             this.thốngKêToolStripMenuItem.Click += new System.EventHandler(this.thốngKêToolStripMenuItem_Click);
             // 
-            // côngThứcToolStripMenuItem
-            // 
-            this.côngThứcToolStripMenuItem.Name = "côngThứcToolStripMenuItem";
-            this.côngThứcToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.côngThứcToolStripMenuItem.Text = "Công Thức";
-            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1369, 773);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FMain";
             this.Text = "FMain";

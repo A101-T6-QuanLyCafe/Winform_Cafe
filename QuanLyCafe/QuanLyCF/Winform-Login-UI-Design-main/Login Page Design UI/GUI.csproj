@@ -81,12 +81,6 @@
     <Compile Include="FqlNguyenLieu.Designer.cs">
       <DependentUpon>FqlNguyenLieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FQlNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FQlNhanVien.Designer.cs">
-      <DependentUpon>FQlNhanVien.cs</DependentUpon>
-    </Compile>
     <Compile Include="FQLPhieuNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,9 +136,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FqlNguyenLieu.resx">
       <DependentUpon>FqlNguyenLieu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FQlNhanVien.resx">
-      <DependentUpon>FQlNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FQLPhieuNhap.resx">
       <DependentUpon>FQLPhieuNhap.cs</DependentUpon>

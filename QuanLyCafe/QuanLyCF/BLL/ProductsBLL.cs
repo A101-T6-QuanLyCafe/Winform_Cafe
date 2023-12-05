@@ -62,6 +62,8 @@ namespace BLL
                     updateItem.Price=pUpdate.Price;
                     updateItem.typeProductID = pUpdate.typeProductID;
                     updateItem.ISDELETE = pUpdate.ISDELETE;
+                    updateItem.photo = pUpdate.photo;
+                    //updateItem.Craftable = pUpdate.Craftable;
                     db.SubmitChanges();
                     return true;
                 }
@@ -106,6 +108,12 @@ namespace BLL
         {
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             return DB.Products.FirstOrDefault(x => x.ProductID == productID).Price;
+        }
+
+        public static Product GetProductByID(int productID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.Products.FirstOrDefault(x => x.ProductID == productID);
         }
         #endregion
     }
