@@ -147,8 +147,6 @@ C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-U
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.EmployeeManager.resources
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.Sales.resources
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.Login.resources
-C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\CustomControlCafe.dll
-C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\CustomControlCafe.pdb
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.MyAccount.resources
 C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.TableManager.resources
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\bin\Debug\CustomControlCafe.dll

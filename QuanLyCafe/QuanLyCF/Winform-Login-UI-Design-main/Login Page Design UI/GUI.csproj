@@ -36,9 +36,6 @@
     <Reference Include="BLL">
       <HintPath>..\..\BLL\bin\Debug\BLL.dll</HintPath>
     </Reference>
-    <Reference Include="CustomControlCafe">
-      <HintPath>..\..\CustomControlCafe\bin\Debug\net6.0\CustomControlCafe.dll</HintPath>
-    </Reference>
     <Reference Include="InputTextBoxLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\InputTextBoxLib.dll</HintPath>

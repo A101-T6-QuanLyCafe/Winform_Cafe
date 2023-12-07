@@ -16,6 +16,9 @@
 		Price real not null default 0,
 		typeProductID int not null,
 		ISDELETE INT NOT NULL DEFAULT 0,
+		------------------ image, craft craftable 
+		photo image,
+		Craftable int not null default 0, -- 0 if hadnt recipe 1 if have
 		constraint FK_Product_TypeProduct foreign key (typeProductID) references typeProduct(typeProductID)
 	);
 	-- Bảng chứa thông tin nhân viên
@@ -33,12 +36,16 @@
 	)
 	go
 
+
+
 	 
 
 
 	-- bảng đặt bàn
 	create table tablesT(
 		TableID int primary key identity(1,1),
+		Name nvarchar(20) unique,
+		Note nvarchar(100) not null default '',
 		ISDELETE INT NOT NULL DEFAULT 0,
 		status int not null default 0, -- 1 la có khach 0 là trống
 	)
@@ -128,7 +135,11 @@
 		Materials_Name nvarchar(100),
 		Price float,
 		supplieriD int,
-		quantity int default 0,
+		quantity int,
+		-- ----------------them unit ------------------ 
+		Unit varchar(10),
+		-- ----------------them image neu co the ko thi thoi ------------------ 
+		Photo image,
 		TypeID int ,
 		ISDELETE INT NOT NULL DEFAULT 0,
 		constraint FK_MT_Type foreign key (TypeID) references TypeMaterials(TypeID),
@@ -145,6 +156,27 @@
 		constraint FK_ICDEtail_Material foreign key (Materials_ID) references materials(Materials_ID)
 
 	)
+	go
+
+		-- ----------------them Recipe ------------------ 
+	Create Table Recipe
+	(
+		RecipeID int primary key identity,
+		ProductID int,
+		Constraint FK_Recipe_Product Foreign key (ProductID) references Products(ProductID)
+	)
+	go
+
+	Create Table RecipeInfo
+	(
+		RecipeInfoID int primary key identity,
+		RecipeID int not null,
+		MaterialID int not null,
+		Quantity int not null,
+		Constraint FK_RecipeInfo_Recipe Foreign key (RecipeID) References Recipe(RecipeID),
+		Constraint FK_RecipeInfo_Materials Foreign key (MaterialID) References materials(Materials_ID)
+	)
+	go
 	--=================================insert data==================================
 	-- Insert data into typeProduct table
 INSERT INTO typeProduct (typeProductName) VALUES 
@@ -168,12 +200,12 @@ INSERT INTO Employees (FirstName, LastName, Email, Phone, DOB, SEX, USERNAME, PA
   (N'Hoàng', N'Trần', 'jane.smith@example.com', '987654321', '1988-05-15', N'Male', 'hoang', '123');
 
 -- Insert data into tablesT table
-INSERT INTO tablesT (status) VALUES
-  (0),
-  (1),
-  (0),
-  (1),
-  (0);
+INSERT INTO tablesT (Name, status) VALUES
+  ('Bàn 1', 0),
+  ('Bàn 2',0),
+  ('Bàn 3',0),
+  ('Bàn 4',0),
+  ('Bàn 5',0);
 
 
 
@@ -308,18 +340,4 @@ BEGIN
         WHERE IncomingID = @IncomingID
     )
     WHERE Incomings.IncomingID = @IncomingID;
-END;
--- tính tổng sản phẩm 
-CREATE TRIGGER UpdateMaterialsQuantity
-ON Incomings_Detail
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    -- Cập nhật quantity của materials dựa trên tổng số lượng trong các phiếu nhập mới
-    UPDATE materials
-    SET quantity = m.quantity + i.quantity
-    FROM materials m
-    INNER JOIN inserted i ON m.Materials_ID = i.Materials_ID;
 END;

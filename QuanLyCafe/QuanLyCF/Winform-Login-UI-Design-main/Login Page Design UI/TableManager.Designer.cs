@@ -34,6 +34,10 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cb_status = new System.Windows.Forms.CheckBox();
             this.btn_active = new System.Windows.Forms.Button();
@@ -44,14 +48,10 @@
             this.rtxt_note = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_tableName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_tableID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_tableName = new InputTextBoxLib.RequireValueTextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -124,9 +124,38 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // TableID
+            // 
+            this.TableID.DataPropertyName = "TableID";
+            this.TableID.HeaderText = "Mã bàn";
+            this.TableID.MinimumWidth = 6;
+            this.TableID.Name = "TableID";
+            // 
+            // TBName
+            // 
+            this.TBName.DataPropertyName = "Name";
+            this.TBName.HeaderText = "Tên bàn";
+            this.TBName.MinimumWidth = 6;
+            this.TBName.Name = "TBName";
+            // 
+            // Note
+            // 
+            this.Note.DataPropertyName = "Note";
+            this.Note.HeaderText = "Ghi chú";
+            this.Note.MinimumWidth = 6;
+            this.Note.Name = "Note";
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Trạng thái";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.txt_tableName);
             this.panel2.Controls.Add(this.cb_status);
             this.panel2.Controls.Add(this.btn_active);
             this.panel2.Controls.Add(this.btn_clear);
@@ -136,7 +165,6 @@
             this.panel2.Controls.Add(this.rtxt_note);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.txt_tableName);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txt_tableID);
             this.panel2.Controls.Add(this.label1);
@@ -232,13 +260,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Trạng Thái";
             // 
-            // txt_tableName
-            // 
-            this.txt_tableName.Location = new System.Drawing.Point(147, 56);
-            this.txt_tableName.Name = "txt_tableName";
-            this.txt_tableName.Size = new System.Drawing.Size(204, 22);
-            this.txt_tableName.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -265,33 +286,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã bàn";
             // 
-            // TableID
+            // txt_tableName
             // 
-            this.TableID.DataPropertyName = "TableID";
-            this.TableID.HeaderText = "Mã bàn";
-            this.TableID.MinimumWidth = 6;
-            this.TableID.Name = "TableID";
-            // 
-            // TBName
-            // 
-            this.TBName.DataPropertyName = "Name";
-            this.TBName.HeaderText = "Tên bàn";
-            this.TBName.MinimumWidth = 6;
-            this.TBName.Name = "TBName";
-            // 
-            // Note
-            // 
-            this.Note.DataPropertyName = "Note";
-            this.Note.HeaderText = "Ghi chú";
-            this.Note.MinimumWidth = 6;
-            this.Note.Name = "Note";
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Trạng thái";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
+            this.txt_tableName.Location = new System.Drawing.Point(147, 56);
+            this.txt_tableName.Name = "txt_tableName";
+            this.txt_tableName.Size = new System.Drawing.Size(204, 22);
+            this.txt_tableName.TabIndex = 81;
             // 
             // TableManager
             // 
@@ -319,7 +319,6 @@
         private System.Windows.Forms.RichTextBox rtxt_note;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_tableName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_tableID;
         private System.Windows.Forms.Label label1;
@@ -338,5 +337,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TBName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private InputTextBoxLib.RequireValueTextBox txt_tableName;
     }
 }

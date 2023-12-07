@@ -55,6 +55,7 @@
             this.dtpBD.Name = "dtpBD";
             this.dtpBD.Size = new System.Drawing.Size(200, 22);
             this.dtpBD.TabIndex = 1;
+            this.dtpBD.ValueChanged += new System.EventHandler(this.dtpBD_ValueChanged);
             // 
             // dtpKT
             // 

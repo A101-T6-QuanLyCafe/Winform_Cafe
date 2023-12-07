@@ -1,4 +1,5 @@
 ﻿using BLL;
+using InputTextBoxLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,9 @@ namespace Login_Page_Design_UI
 
         private void btn_add_Click(object sender, EventArgs e)
         {
+            if (!IsValidate())
+                return;
+
             tablesT newTable = new tablesT();
             newTable.Name = txt_tableName.Text;
             newTable.Note = rtxt_note.Text;
@@ -79,6 +83,8 @@ namespace Login_Page_Design_UI
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
+            if (!IsValidate())
+                return;
             if (txt_tableID.Text.Length <= 0)
                 return;
             tablesT newTable = new tablesT();
@@ -96,6 +102,8 @@ namespace Login_Page_Design_UI
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
+            if (!IsValidate())
+                return;
             if (txt_tableID.Text.Length <= 0)
                 return;
             int tableID = int.Parse(txt_tableID.Text);
@@ -132,6 +140,21 @@ namespace Login_Page_Design_UI
         private void btn_search_Click(object sender, EventArgs e)
         {
             loadDatagridView();
+        }
+
+        private Boolean IsValidate()
+        {
+            foreach (Control item in panel3.Controls)
+            {
+                if (!item.GetType().Equals(typeof(RequireValueTextBox)))
+                    continue;
+
+                if ((item as RequireValueTextBox).errorProvider.GetError(item) != "")
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

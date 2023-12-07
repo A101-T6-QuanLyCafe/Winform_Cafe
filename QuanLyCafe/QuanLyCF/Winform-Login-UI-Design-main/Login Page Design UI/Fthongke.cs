@@ -21,9 +21,11 @@ namespace Login_Page_Design_UI
 
         private void btnTK_Click(object sender, EventArgs e)
         {
-            if (dtpBD.Value > dtpKT.Value || dtpKT.Value<dtpBD.Value) { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc !!"); } else {
+            if (dtpBD.Value > dtpKT.Value || dtpKT.Value<dtpBD.Value)
+                { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc !!"); } 
+            else {
                 dataGridView1.DataSource = ordersBLL.GetOrdersByDateRange(dtpBD.Value, dtpKT.Value);
-
+                if (dataGridView1.Rows.Count <= 0) return;
                 float doanhthu = 0;
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
@@ -31,11 +33,14 @@ namespace Login_Page_Design_UI
                 }
                 txtTongDoanhThu.Text = doanhthu.ToString()+" $";
             }
-           
-
         }
 
         private void txtTongDoanhThu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpBD_ValueChanged(object sender, EventArgs e)
         {
 
         }

@@ -134,7 +134,7 @@ namespace Login_Page_Design_UI
         }
         private Boolean IsValidate()
         {
-            foreach (Control item in panel2.Controls)
+            foreach (Control item in panel3.Controls)
             {
                 if (!item.GetType().IsSubclassOf(typeof(RequireValueTextBox)))
                     continue;

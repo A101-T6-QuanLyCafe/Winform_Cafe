@@ -59,8 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.empID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +67,8 @@
             this.USERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -241,7 +241,7 @@
             this.btn_showPass.Name = "btn_showPass";
             this.btn_showPass.Size = new System.Drawing.Size(24, 23);
             this.btn_showPass.TabIndex = 61;
-            this.btn_showPass.Text = "V";
+            this.btn_showPass.Text = "O";
             this.btn_showPass.UseVisualStyleBackColor = true;
             this.btn_showPass.Click += new System.EventHandler(this.btn_showPass_Click);
             // 
@@ -383,25 +383,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Location = new System.Drawing.Point(0, 359);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1062, 311);
-            this.panel4.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1062, 673);
-            this.panel1.TabIndex = 1;
-            // 
             // empID
             // 
             this.empID.DataPropertyName = "EmployeeID";
@@ -457,6 +438,25 @@
             this.SEX.HeaderText = "Giới tính";
             this.SEX.MinimumWidth = 6;
             this.SEX.Name = "SEX";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Location = new System.Drawing.Point(0, 359);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1062, 311);
+            this.panel4.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1062, 673);
+            this.panel1.TabIndex = 1;
             // 
             // EmployeeManager
             // 

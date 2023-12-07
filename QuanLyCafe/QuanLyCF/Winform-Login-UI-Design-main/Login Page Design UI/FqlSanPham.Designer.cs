@@ -34,7 +34,6 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtTebSP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtGia = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
@@ -51,10 +50,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.txtGia = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSanpham)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGia)).BeginInit();
             this.SuspendLayout();
             // 
             // cboLoai
@@ -88,6 +89,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(158, 33);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(176, 22);
@@ -108,13 +110,6 @@
             this.label2.Size = new System.Drawing.Size(93, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Tên sản phẩm";
-            // 
-            // txtGia
-            // 
-            this.txtGia.Location = new System.Drawing.Point(525, 39);
-            this.txtGia.Name = "txtGia";
-            this.txtGia.Size = new System.Drawing.Size(193, 22);
-            this.txtGia.TabIndex = 7;
             // 
             // label3
             // 
@@ -195,6 +190,7 @@
             this.cb_isDelete.TabIndex = 7;
             this.cb_isDelete.Text = "đã xóa";
             this.cb_isDelete.UseVisualStyleBackColor = true;
+            this.cb_isDelete.CheckedChanged += new System.EventHandler(this.cb_isDelete_CheckedChanged);
             // 
             // btn_search
             // 
@@ -216,6 +212,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.txtGia);
             this.panel3.Controls.Add(this.btn_editRecipe);
             this.panel3.Controls.Add(this.btn_addRecipe);
             this.panel3.Controls.Add(this.pictureBox1);
@@ -225,7 +222,6 @@
             this.panel3.Controls.Add(this.btnSua);
             this.panel3.Controls.Add(this.btn_add);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.txtGia);
             this.panel3.Controls.Add(this.cboLoai);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.txtTebSP);
@@ -287,6 +283,13 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // txtGia
+            // 
+            this.txtGia.Location = new System.Drawing.Point(525, 30);
+            this.txtGia.Name = "txtGia";
+            this.txtGia.Size = new System.Drawing.Size(192, 22);
+            this.txtGia.TabIndex = 77;
+            // 
             // FqlSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,6 +307,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -316,7 +320,6 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.TextBox txtTebSP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtGia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSua;
@@ -333,5 +336,6 @@
         private System.Windows.Forms.CheckBox cb_craftable;
         private System.Windows.Forms.Button btn_editRecipe;
         private System.Windows.Forms.Button btn_addRecipe;
+        private System.Windows.Forms.NumericUpDown txtGia;
     }
 }

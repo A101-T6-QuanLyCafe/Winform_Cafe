@@ -82,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 40);
+            this.label1.Location = new System.Drawing.Point(49, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 16);
             this.label1.TabIndex = 2;
@@ -91,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(901, 40);
+            this.label2.Location = new System.Drawing.Point(690, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             // txtGia
             // 
-            this.txtGia.Location = new System.Drawing.Point(961, 37);
+            this.txtGia.Location = new System.Drawing.Point(750, 31);
             this.txtGia.Multiline = true;
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(181, 25);
@@ -110,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 93);
+            this.label3.Location = new System.Drawing.Point(47, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 16);
             this.label3.TabIndex = 6;
@@ -145,7 +145,7 @@
             // ckISdelete
             // 
             this.ckISdelete.AutoSize = true;
-            this.ckISdelete.Location = new System.Drawing.Point(724, 38);
+            this.ckISdelete.Location = new System.Drawing.Point(620, 21);
             this.ckISdelete.Name = "ckISdelete";
             this.ckISdelete.Size = new System.Drawing.Size(73, 20);
             this.ckISdelete.TabIndex = 10;
@@ -156,7 +156,7 @@
             // cboLoai
             // 
             this.cboLoai.FormattingEnabled = true;
-            this.cboLoai.Location = new System.Drawing.Point(961, 96);
+            this.cboLoai.Location = new System.Drawing.Point(750, 96);
             this.cboLoai.Name = "cboLoai";
             this.cboLoai.Size = new System.Drawing.Size(181, 24);
             this.cboLoai.TabIndex = 11;
@@ -164,7 +164,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(889, 102);
+            this.label5.Location = new System.Drawing.Point(678, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 16);
             this.label5.TabIndex = 12;
@@ -221,6 +221,7 @@
             // 
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txt_search);
+            this.panel2.Controls.Add(this.ckISdelete);
             this.panel2.Location = new System.Drawing.Point(12, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1153, 59);
@@ -250,7 +251,6 @@
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.txtDVT);
             this.panel3.Controls.Add(this.btnXOa);
-            this.panel3.Controls.Add(this.ckISdelete);
             this.panel3.Controls.Add(this.btnSua);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.btn_clear);
@@ -275,7 +275,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(698, 99);
+            this.label8.Location = new System.Drawing.Point(968, 105);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 16);
             this.label8.TabIndex = 75;
@@ -283,7 +283,7 @@
             // 
             // txtDVT
             // 
-            this.txtDVT.Location = new System.Drawing.Point(754, 90);
+            this.txtDVT.Location = new System.Drawing.Point(1024, 96);
             this.txtDVT.Multiline = true;
             this.txtDVT.Name = "txtDVT";
             this.txtDVT.Size = new System.Drawing.Size(102, 27);

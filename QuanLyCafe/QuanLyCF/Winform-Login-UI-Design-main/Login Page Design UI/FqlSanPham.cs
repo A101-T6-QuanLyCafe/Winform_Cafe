@@ -190,16 +190,19 @@ namespace Login_Page_Design_UI
             LoadProduct();
         }
 
-        private void cb_craftable_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btn_search_Click(object sender, EventArgs e)
         {
             LoadProduct();
         }
-
-   
+        private void cb_craftable_CheckedChanged(object sender, EventArgs e)
+        {
+            btn_search.PerformClick();
+        }
+        private void cb_isDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            btn_search.PerformClick();
+        }
     }
 }
