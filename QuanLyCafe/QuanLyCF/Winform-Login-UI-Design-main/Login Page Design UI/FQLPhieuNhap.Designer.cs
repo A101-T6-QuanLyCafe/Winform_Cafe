@@ -101,6 +101,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(211, 79);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(174, 22);
             this.textBox1.TabIndex = 22;
             // 
@@ -133,6 +134,7 @@
             // 
             this.txtNV.Location = new System.Drawing.Point(211, 32);
             this.txtNV.Name = "txtNV";
+            this.txtNV.ReadOnly = true;
             this.txtNV.Size = new System.Drawing.Size(174, 22);
             this.txtNV.TabIndex = 18;
             // 
@@ -165,6 +167,7 @@
             // 
             this.txtCongNo.Location = new System.Drawing.Point(791, 82);
             this.txtCongNo.Name = "txtCongNo";
+            this.txtCongNo.ReadOnly = true;
             this.txtCongNo.Size = new System.Drawing.Size(178, 22);
             this.txtCongNo.TabIndex = 19;
             // 
@@ -181,8 +184,10 @@
             // 
             this.txtTongTien.Location = new System.Drawing.Point(791, 26);
             this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.ReadOnly = true;
             this.txtTongTien.Size = new System.Drawing.Size(174, 22);
             this.txtTongTien.TabIndex = 17;
+            this.txtTongTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTongTien_KeyPress);
             // 
             // label4
             // 

@@ -140,14 +140,45 @@ namespace BLL
                 .ToList();
         }
         // Hàm tìm kiếm gần đúng materials dựa trên tên
-        public List<material> SearchMaterialsByName(string keyword)
+        public DataTable SearchMaterialsByName(string keyword)
         {
            
-            var result = db.materials
+            
+
+            try
+            {
+                var materialsQuery = db.materials
                 .Where(m => m.Materials_Name.Contains(keyword))
                 .ToList();
 
-            return result;
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Mã nguyên liệu", typeof(int));
+                dataTable.Columns.Add("Tên nguyên liệu", typeof(string));
+                dataTable.Columns.Add("Giá", typeof(float));
+                dataTable.Columns.Add("Mã nhà cung cấp", typeof(int));
+                dataTable.Columns.Add("Số lượng tồn", typeof(int));
+                dataTable.Columns.Add("Đơn vị", typeof(string));
+                dataTable.Columns.Add("Mã loại", typeof(int));
+
+                foreach (var material in materialsQuery)
+                {
+                    dataTable.Rows.Add(
+                        material.Materials_ID,
+                        material.Materials_Name,
+                        material.Price,
+                        material.supplieriD,
+                        material.quantity,
+                        material.Unit,
+                        material.TypeID
+                    );
+                }
+
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
         }
         public List<material> GetMaterialsNotISdelete()
         {

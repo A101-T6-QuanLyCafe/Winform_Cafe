@@ -76,18 +76,20 @@
             // txtTongDoanhThu
             // 
             this.txtTongDoanhThu.Enabled = false;
-            this.txtTongDoanhThu.Location = new System.Drawing.Point(799, 639);
+            this.txtTongDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongDoanhThu.Location = new System.Drawing.Point(850, 636);
             this.txtTongDoanhThu.Name = "txtTongDoanhThu";
-            this.txtTongDoanhThu.Size = new System.Drawing.Size(100, 22);
+            this.txtTongDoanhThu.Size = new System.Drawing.Size(100, 27);
             this.txtTongDoanhThu.TabIndex = 4;
             this.txtTongDoanhThu.TextChanged += new System.EventHandler(this.txtTongDoanhThu_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(696, 642);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(703, 639);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 16);
+            this.label1.Size = new System.Drawing.Size(124, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Tổng doanh thu";
             // 

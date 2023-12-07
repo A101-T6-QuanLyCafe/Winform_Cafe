@@ -30,6 +30,9 @@
         {
             this.dtg_NguyenLieu = new System.Windows.Forms.DataGridView();
             this.dtgGioHang = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnTaoHD = new System.Windows.Forms.Button();
@@ -55,9 +58,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtMaPNN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_NguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGioHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSL)).BeginInit();
@@ -96,6 +96,30 @@
             this.dtgGioHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgGioHang_CellContentClick);
             this.dtgGioHang.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgGioHang_CellMouseClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã nguyên liệu";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên nguyên liệu";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Số lượng";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 125;
+            // 
             // btnThem
             // 
             this.btnThem.Location = new System.Drawing.Point(112, 333);
@@ -119,7 +143,7 @@
             // 
             this.btnTaoHD.Location = new System.Drawing.Point(526, 333);
             this.btnTaoHD.Name = "btnTaoHD";
-            this.btnTaoHD.Size = new System.Drawing.Size(83, 32);
+            this.btnTaoHD.Size = new System.Drawing.Size(142, 32);
             this.btnTaoHD.TabIndex = 4;
             this.btnTaoHD.Text = "Xác Nhận";
             this.btnTaoHD.UseVisualStyleBackColor = true;
@@ -165,6 +189,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(481, 659);
             this.panel1.TabIndex = 27;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label9
             // 
@@ -188,8 +213,9 @@
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(75, 41);
             this.btnReload.TabIndex = 43;
-            this.btnReload.Text = "reload";
+            this.btnReload.Text = "Làm mới";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // label8
             // 
@@ -223,6 +249,7 @@
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(276, 22);
             this.txtTimKiem.TabIndex = 39;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // button1
             // 
@@ -230,8 +257,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 41);
             this.button1.TabIndex = 38;
-            this.button1.Text = "thoát";
+            this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnClear
             // 
@@ -239,8 +267,9 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 43);
             this.btnClear.TabIndex = 37;
-            this.btnClear.Text = "clear";
+            this.btnClear.Text = "Xóa";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click_1);
             // 
             // btnXacNhan
             // 
@@ -248,8 +277,9 @@
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(83, 41);
             this.btnXacNhan.TabIndex = 36;
-            this.btnXacNhan.Text = "xác nhận ";
+            this.btnXacNhan.Text = "Xác nhận ";
             this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // label6
             // 
@@ -282,6 +312,8 @@
             this.txtDaTra.Name = "txtDaTra";
             this.txtDaTra.Size = new System.Drawing.Size(276, 22);
             this.txtDaTra.TabIndex = 32;
+            this.txtDaTra.TextChanged += new System.EventHandler(this.txtDaTra_TextChanged);
+            this.txtDaTra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDaTra_KeyPress);
             // 
             // label4
             // 
@@ -298,6 +330,7 @@
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Size = new System.Drawing.Size(276, 22);
             this.txtGiaNhap.TabIndex = 30;
+            this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
             // label3
             // 
@@ -325,30 +358,6 @@
             this.label1.Size = new System.Drawing.Size(259, 29);
             this.label1.TabIndex = 27;
             this.label1.Text = "Thông tin phiếu nhập";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã nguyên liệu";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên nguyên liệu";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Số lượng";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
             // 
             // FNhapHang
             // 

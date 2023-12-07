@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Linq;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,40 @@ namespace BLL
 
        
 
-        public List<Incoming> GetAllIncomings()
+        public DataTable GetAllIncomings()
         {
-            return dbContext.Incomings.ToList();
+
+           
+            try
+            {
+                var materialsQuery = dbContext.Incomings.ToList();
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Mã phiếu nhập", typeof(int));
+                dataTable.Columns.Add("Ngày lập", typeof(string));
+                dataTable.Columns.Add("Tổng tiền", typeof(float));
+                dataTable.Columns.Add("Đã trả", typeof(int));
+                dataTable.Columns.Add("Mã nhân viên", typeof(int));
+               
+
+                foreach (var incoming in materialsQuery)
+                {
+                    dataTable.Rows.Add(
+                        incoming.IncomingID,
+                        incoming.IncomingDate,
+                        incoming.total_Price,
+                        incoming.amount_paid,
+                        incoming.EmployeeID
+                       
+                    );
+                }
+
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void AddIncoming(Incoming newIncoming)

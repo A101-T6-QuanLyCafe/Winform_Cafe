@@ -47,3 +47,10 @@ F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.AssemblyReferenc
 F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
 F:\doanUNGDung\.vs\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll.config
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.dll
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\bin\Debug\BLL.pdb
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.dll
+F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\BLL\obj\Debug\BLL.pdb

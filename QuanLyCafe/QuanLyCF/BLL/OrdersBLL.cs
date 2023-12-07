@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -73,15 +74,46 @@ namespace BLL
                 return false;
             }
         }
-        public List<Order> GetOrdersByDateRange(DateTime startDate, DateTime endDate)
+        public DataTable GetOrdersByDateRange(DateTime startDate, DateTime endDate)
         {
            
             
              
-                return db.Orders
+               
+            try
+            {
+                var materialsQuery = db.Orders
                     .Where(o => o.OrderDate >= startDate && o.OrderDate <= endDate)
                     .ToList();
-            
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Mã hóa đơn", typeof(int));
+                dataTable.Columns.Add("Ngày lập", typeof(string));
+                dataTable.Columns.Add("Tổng tiền", typeof(float));
+               
+                dataTable.Columns.Add("Mã nhân viên", typeof(int));
+                dataTable.Columns.Add("Bàn", typeof(int));
+                dataTable.Columns.Add("Trạng thái", typeof(int));
+                foreach (var incoming in materialsQuery)
+                {
+                    dataTable.Rows.Add(
+                        incoming.OrderID,
+                        incoming.EmployeeID,
+                        incoming.TotalAmount,
+                        incoming.EmployeeID,
+                        incoming.TablesID,
+                        incoming.status
+
+                    );
+                }
+
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
         #region Hoang
         public static Order GetOrderFromActiveTable(int v)

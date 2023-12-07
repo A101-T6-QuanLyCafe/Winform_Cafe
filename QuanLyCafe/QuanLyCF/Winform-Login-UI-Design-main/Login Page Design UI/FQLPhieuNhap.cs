@@ -43,6 +43,7 @@ namespace Login_Page_Design_UI
             emp = employeesBLL.GetEmployeeById(int.Parse(dtgPN.CurrentRow.Cells[4].Value.ToString()));
             txtNV.Text = emp.FirstName + " " + emp.LastName;
             txtCongNo.Text = (float.Parse(txtTongTien.Text) - float.Parse(txtDaTra.Text)).ToString();
+            textBox1.Text = emp.EmployeeID.ToString();
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -95,5 +96,9 @@ namespace Login_Page_Design_UI
             LoadPN();
         }
 
+        private void txtTongTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

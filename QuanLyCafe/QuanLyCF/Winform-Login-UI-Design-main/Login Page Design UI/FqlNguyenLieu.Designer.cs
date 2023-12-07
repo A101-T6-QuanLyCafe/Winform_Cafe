@@ -46,14 +46,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cboNCC = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_search = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_clear = new System.Windows.Forms.Button();
-            this.btnMoBan = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDVT = new System.Windows.Forms.TextBox();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.btnMoBan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgNL)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -76,6 +75,7 @@
             this.txtID.Location = new System.Drawing.Point(158, 39);
             this.txtID.Multiline = true;
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(176, 25);
             this.txtID.TabIndex = 1;
             // 
@@ -104,6 +104,8 @@
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(181, 25);
             this.txtGia.TabIndex = 3;
+            this.txtGia.TextChanged += new System.EventHandler(this.txtGia_TextChanged);
+            this.txtGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGia_KeyPress);
             // 
             // label3
             // 
@@ -138,15 +140,16 @@
             this.txtSL.Name = "txtSL";
             this.txtSL.Size = new System.Drawing.Size(147, 27);
             this.txtSL.TabIndex = 7;
+            this.txtSL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSL_KeyPress);
             // 
             // ckISdelete
             // 
             this.ckISdelete.AutoSize = true;
             this.ckISdelete.Location = new System.Drawing.Point(724, 38);
             this.ckISdelete.Name = "ckISdelete";
-            this.ckISdelete.Size = new System.Drawing.Size(79, 20);
+            this.ckISdelete.Size = new System.Drawing.Size(73, 20);
             this.ckISdelete.TabIndex = 10;
-            this.ckISdelete.Text = "IsDelete";
+            this.ckISdelete.Text = "Đã Xóa";
             this.ckISdelete.UseVisualStyleBackColor = true;
             this.ckISdelete.CheckedChanged += new System.EventHandler(this.ckISdelete_CheckedChanged);
             // 
@@ -183,7 +186,7 @@
             this.btnXOa.Name = "btnXOa";
             this.btnXOa.Size = new System.Drawing.Size(104, 30);
             this.btnXOa.TabIndex = 14;
-            this.btnXOa.Text = "xóa";
+            this.btnXOa.Text = "Xóa";
             this.btnXOa.UseVisualStyleBackColor = true;
             this.btnXOa.Click += new System.EventHandler(this.btnXOa_Click);
             // 
@@ -217,21 +220,21 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.btn_search);
             this.panel2.Controls.Add(this.txt_search);
             this.panel2.Location = new System.Drawing.Point(12, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1153, 59);
             this.panel2.TabIndex = 18;
             // 
-            // btn_search
+            // label7
             // 
-            this.btn_search.Location = new System.Drawing.Point(963, 19);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(75, 23);
-            this.btn_search.TabIndex = 5;
-            this.btn_search.Text = "Tìm kiếm";
-            this.btn_search.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(56, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(216, 25);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "  Quản lý nguyên liệu";
             // 
             // txt_search
             // 
@@ -239,6 +242,7 @@
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(207, 22);
             this.txt_search.TabIndex = 4;
+            this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
             // 
             // panel3
             // 
@@ -268,35 +272,6 @@
             this.panel3.Size = new System.Drawing.Size(1153, 222);
             this.panel3.TabIndex = 19;
             // 
-            // btn_clear
-            // 
-            this.btn_clear.Location = new System.Drawing.Point(83, 157);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(104, 30);
-            this.btn_clear.TabIndex = 73;
-            this.btn_clear.Text = "Làm mới";
-            this.btn_clear.UseVisualStyleBackColor = true;
-            // 
-            // btnMoBan
-            // 
-            this.btnMoBan.Location = new System.Drawing.Point(981, 157);
-            this.btnMoBan.Name = "btnMoBan";
-            this.btnMoBan.Size = new System.Drawing.Size(104, 30);
-            this.btnMoBan.TabIndex = 13;
-            this.btnMoBan.Text = "mở bán lại";
-            this.btnMoBan.UseVisualStyleBackColor = true;
-            this.btnMoBan.Click += new System.EventHandler(this.btnMoBan_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(56, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(216, 25);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "  Quản lý nguyên liệu";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -313,6 +288,26 @@
             this.txtDVT.Name = "txtDVT";
             this.txtDVT.Size = new System.Drawing.Size(102, 27);
             this.txtDVT.TabIndex = 74;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(83, 157);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(104, 30);
+            this.btn_clear.TabIndex = 73;
+            this.btn_clear.Text = "Làm mới";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // btnMoBan
+            // 
+            this.btnMoBan.Location = new System.Drawing.Point(986, 157);
+            this.btnMoBan.Name = "btnMoBan";
+            this.btnMoBan.Size = new System.Drawing.Size(104, 30);
+            this.btnMoBan.TabIndex = 13;
+            this.btnMoBan.Text = "Mở bán lại";
+            this.btnMoBan.UseVisualStyleBackColor = true;
+            this.btnMoBan.Click += new System.EventHandler(this.btnMoBan_Click);
             // 
             // FqlNguyenLieu
             // 
@@ -354,7 +349,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboNCC;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.TextBox txt_search;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_clear;

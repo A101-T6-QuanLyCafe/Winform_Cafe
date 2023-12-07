@@ -174,6 +174,10 @@ namespace Login_Page_Design_UI
             {
                 dtgNL.DataSource = materialsBLL.GetMaterialsISdelete();
             }
+            else
+            {
+                loadNL();
+            }
         }
 
         private void btnMoBan_Click(object sender, EventArgs e)
@@ -200,6 +204,56 @@ namespace Login_Page_Design_UI
 
                 MessageBox.Show("that bai");
             }
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_search.Text.Length > 0)
+            {
+                dtgNL.DataSource = materialsBLL.SearchMaterialsByName(txt_search.Text.Trim());
+            }
+            else
+            {
+                loadNL();
+            }
+        }
+
+        private void txtSL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+
+                e.Handled = true;
+            }
+        }
+
+        private void txtGia_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            txtDVT.Text = "";
+            txtGia.Text = "";
+            txtID.Text = "";
+            txtSL.Text = "";
+            txtTen.Text = "";
+            txt_search.Text = "";
         }
     }
 }

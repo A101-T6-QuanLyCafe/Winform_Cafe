@@ -92,11 +92,13 @@ namespace Login_Page_Design_UI
             txtGiaNhap.Text = "";
             txtDaTra.Text = "";
             txtNV.Text = "";
+            txtTimKiem.Text = "";
         }
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadNL();
             loadNCC();
+            
         }
 
         private void btnTaoHD_Click(object sender, EventArgs e)
@@ -162,6 +164,7 @@ namespace Login_Page_Design_UI
                 INCOMINGCURRENT.amount_paid = int.Parse(txtDaTra.Text.Trim());
                 incomingsBLL.UpdateIncoming(INCOMINGCURRENT);
                 ClearTXT();
+                MessageBox.Show("nhập hàng thành công!");
             }
             catch 
             {
@@ -204,6 +207,66 @@ namespace Login_Page_Design_UI
         }
 
         private void dtgGioHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtDaTra_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDaTra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text.Length > 0)
+            {
+                dtg_NguyenLieu.DataSource = materialsBLL.SearchMaterialsByName(txtTimKiem.Text.Trim());
+            }
+            if (txtTimKiem.Text.Length == 0)
+            {
+                LoadNL();
+            }
+        }
+
+        private void btnClear_Click_1(object sender, EventArgs e)
+        {
+            ClearTXT();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtGiaNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

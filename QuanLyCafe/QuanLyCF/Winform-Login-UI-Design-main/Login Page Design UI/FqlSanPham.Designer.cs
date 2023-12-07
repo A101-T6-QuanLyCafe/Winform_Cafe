@@ -105,9 +105,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(47, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.Size = new System.Drawing.Size(93, 16);
             this.label2.TabIndex = 4;
-            this.label2.Text = "tên sản phẩm";
+            this.label2.Text = "Tên sản phẩm";
             // 
             // txtGia
             // 
@@ -140,7 +140,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(104, 30);
             this.btnSua.TabIndex = 11;
-            this.btnSua.Text = "sửa";
+            this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -150,7 +150,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(104, 30);
             this.btnXoa.TabIndex = 12;
-            this.btnXoa.Text = "xóa";
+            this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
@@ -160,7 +160,7 @@
             this.btnMoBan.Name = "btnMoBan";
             this.btnMoBan.Size = new System.Drawing.Size(104, 30);
             this.btnMoBan.TabIndex = 13;
-            this.btnMoBan.Text = "mở bán lại";
+            this.btnMoBan.Text = "Mở bán lại";
             this.btnMoBan.UseVisualStyleBackColor = true;
             this.btnMoBan.Click += new System.EventHandler(this.btnMoBan_Click);
             // 
