@@ -24,14 +24,23 @@ namespace Login_Page_Design_UI
             if (dtpBD.Value > dtpKT.Value || dtpKT.Value<dtpBD.Value)
                 { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc !!"); } 
             else {
-                dataGridView1.DataSource = ordersBLL.GetOrdersByDateRange(dtpBD.Value, dtpKT.Value);
-                if (dataGridView1.Rows.Count <= 0) return;
-                float doanhthu = 0;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                try
                 {
-                    doanhthu += float.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                    dataGridView1.DataSource = ordersBLL.GetOrdersByDateRange(dtpBD.Value, dtpKT.Value);
+                    if (dataGridView1.Rows.Count <= 0) return;
+                    float doanhthu = 0;
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        doanhthu += float.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                    }
+                    txtTongDoanhThu.Text = doanhthu.ToString() + " $";
                 }
-                txtTongDoanhThu.Text = doanhthu.ToString()+" $";
+                catch (Exception)
+                {
+
+                   
+                }
+              
             }
         }
 

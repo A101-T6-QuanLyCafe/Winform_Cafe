@@ -51,8 +51,8 @@ namespace Login_Page_Design_UI
                 DataGridViewRow selectedRow = dtg_NguyenLieu.SelectedRows[0];
 
                 // Lấy giá trị của ô trong dòng được chọn
-                string id=selectedRow.Cells["Materials_ID"].Value.ToString();
-                string tenNguyenLieu = selectedRow.Cells["Materials_Name"].Value.ToString();
+                string id=selectedRow.Cells[0].Value.ToString();
+                string tenNguyenLieu = selectedRow.Cells[1].Value.ToString();
                
 
                 
@@ -109,7 +109,7 @@ namespace Login_Page_Design_UI
                 IncomingDate = DateTime.Now,
                 total_Price = 0, // Sẽ cập nhật sau
                 amount_paid = 0,
-                EmployeeID= employeesBLL.GetEmployeeIDByEmail(Properties.Settings.Default.Username)
+                EmployeeID= nv.EmployeeID
         };
 
             // Thêm Incomings mới vào cơ sở dữ liệu

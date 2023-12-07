@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CoffeeShopDB" Class="CoffeeShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=Hoangs\SQLEXPRESS;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FMAJ644;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.EmployeePermissions" Member="EmployeePermissions">
     <Type Name="EmployeePermission">
       <Column Name="EmployeePermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

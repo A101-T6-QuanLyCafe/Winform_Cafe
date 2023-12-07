@@ -84,7 +84,7 @@ namespace BLL
     #endregion
 		
 		public CoffeeShopDBDataContext() : 
-				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString1, mappingSource)
+				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
