@@ -156,3 +156,4 @@ F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login 
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.Login.resources
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.MyAccount.resources
 F:\DoAnUDTM\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.TableManager.resources
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.AddRecipe.resources

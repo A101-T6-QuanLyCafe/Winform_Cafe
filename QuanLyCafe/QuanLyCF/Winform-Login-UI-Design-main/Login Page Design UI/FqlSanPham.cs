@@ -25,7 +25,7 @@ namespace Login_Page_Design_UI
 
         public void LoadProduct()
         {
-            dtgSanpham.DataSource = productsBLL.getAllProducts().Select(x => new {x.ProductID, x.ProductName, x.Price, x.typeProductID }).ToList();
+            dtgSanpham.DataSource = ProductsBLL.GetByFillter(txt_search.Text, cb_isDelete.Checked, cb_craftable.Checked).Select(x => new { x.ProductID, x.ProductName, x.Price, x.typeProductID }).ToList();
         }
         public void loadcbo()
         {
@@ -38,24 +38,21 @@ namespace Login_Page_Design_UI
         {
             loadcbo();
             LoadProduct();
+            btn_addRecipe.Enabled = false;
+            btn_editRecipe.Enabled = false;
         }
 
-        private void dtgSanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            
-        }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            Product newProduct = new Product
-            {
-                ProductID = int.Parse(txtID.Text),
-                ProductName = txtTebSP.Text,
-                typeProductID = int.Parse(cboLoai.SelectedValue.ToString()),
-                Price = float.Parse(txtGia.Text),
-                photo = getPhoto()
-            };
+
+            Product newProduct = new Product();
+            newProduct.ProductID = int.Parse(txtID.Text);
+            newProduct.ProductName = txtTebSP.Text;
+            newProduct.typeProductID = int.Parse(cboLoai.SelectedValue.ToString());
+            newProduct.Price = float.Parse(txtGia.Text);
+            if (pictureBox1.Image != null)
+                newProduct.photo = getPhoto();
             try
             {
                 productsBLL.update(newProduct);
@@ -87,13 +84,7 @@ namespace Login_Page_Design_UI
             
         }
 
-        private void ckDaXoa_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ckDaXoa.Checked)
-            {
-                dtgSanpham.DataSource = productsBLL.GetDeletedproduct();
-            }
-        }
+
 
         private void btnMoBan_Click(object sender, EventArgs e)
         {
@@ -139,18 +130,27 @@ namespace Login_Page_Design_UI
             {
                 pictureBox1.Image = null;
             }
+            if(pd.Craftable == 1)
+            {
+                btn_editRecipe.Enabled = true;
+                btn_addRecipe.Enabled = false;
+            }    
+            else
+            {
+                btn_editRecipe.Enabled = false;
+                btn_addRecipe.Enabled = true;
+            }
 
         }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            Product newProduct = new Product
-            {
-                ProductName = txtTebSP.Text,
-                typeProductID = int.Parse(cboLoai.SelectedValue.ToString()),
-                Price = float.Parse(txtGia.Text),
-                photo = getPhoto()
-            };
+            Product newProduct = new Product();
+            newProduct.ProductName = txtTebSP.Text;
+            newProduct.typeProductID = int.Parse(cboLoai.SelectedValue.ToString());
+            newProduct.Price = float.Parse(txtGia.Text);
+            if (pictureBox1.Image != null)
+                newProduct.photo = getPhoto();
             try
             {
                 productsBLL.insert(newProduct);
@@ -169,6 +169,35 @@ namespace Login_Page_Design_UI
             MemoryStream stream = new MemoryStream();
             pictureBox1.Image.Save(stream, pictureBox1.Image.RawFormat);
             return stream.GetBuffer();
+        }
+
+        private void btn_addRecipe_Click(object sender, EventArgs e)
+        {
+            showRecipeForm("Create");
+            btn_addRecipe.Enabled = false;
+        }
+
+        private void btn_editRecipe_Click(object sender, EventArgs e)
+        {
+            showRecipeForm("Edit");
+        }
+
+        private void showRecipeForm(string tran)
+        {
+            Product pd = productsBLL.GetProductById(int.Parse(txtID.Text));
+            AddRecipe f = new AddRecipe(pd, tran);
+            f.ShowDialog();
+            LoadProduct();
+        }
+
+        private void cb_craftable_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            LoadProduct();
         }
     }
 }

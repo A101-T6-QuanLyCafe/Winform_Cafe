@@ -190,5 +190,28 @@ namespace BLL
             }
 
         }
+
+
+        #region Hoang
+        public static List<material> GetAll()
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.materials.ToList();
+        }
+
+        public static material GetByID(int v)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.materials.FirstOrDefault(x => x.Materials_ID == v);
+        }
+
+        internal static void MinusQuantity(int materialID, int v)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            material mt = DB.materials.FirstOrDefault(x => x.Materials_ID == materialID);
+            mt.quantity -= v;
+            DB.SubmitChanges();
+        }
+        #endregion
     }
 }

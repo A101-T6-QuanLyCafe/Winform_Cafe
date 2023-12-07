@@ -36,17 +36,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtGia = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.ckIsdelete = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnMoBan = new System.Windows.Forms.Button();
-            this.ckDaXoa = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cb_craftable = new System.Windows.Forms.CheckBox();
             this.cb_isDelete = new System.Windows.Forms.CheckBox();
             this.btn_search = new System.Windows.Forms.Button();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_editRecipe = new System.Windows.Forms.Button();
+            this.btn_addRecipe = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.dtgSanpham.Size = new System.Drawing.Size(1057, 315);
             this.dtgSanpham.TabIndex = 1;
             this.dtgSanpham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgSanpham_CellClick);
-            this.dtgSanpham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgSanpham_CellContentClick);
             // 
             // label1
             // 
@@ -125,16 +125,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Giá";
             // 
-            // ckIsdelete
-            // 
-            this.ckIsdelete.AutoSize = true;
-            this.ckIsdelete.Location = new System.Drawing.Point(286, 10);
-            this.ckIsdelete.Name = "ckIsdelete";
-            this.ckIsdelete.Size = new System.Drawing.Size(77, 20);
-            this.ckIsdelete.TabIndex = 8;
-            this.ckIsdelete.Text = "isdelete";
-            this.ckIsdelete.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -174,28 +164,27 @@
             this.btnMoBan.UseVisualStyleBackColor = true;
             this.btnMoBan.Click += new System.EventHandler(this.btnMoBan_Click);
             // 
-            // ckDaXoa
-            // 
-            this.ckDaXoa.AutoSize = true;
-            this.ckDaXoa.Location = new System.Drawing.Point(286, 36);
-            this.ckDaXoa.Name = "ckDaXoa";
-            this.ckDaXoa.Size = new System.Drawing.Size(70, 20);
-            this.ckDaXoa.TabIndex = 14;
-            this.ckDaXoa.Text = "đã xóa";
-            this.ckDaXoa.UseVisualStyleBackColor = true;
-            this.ckDaXoa.CheckedChanged += new System.EventHandler(this.ckDaXoa_CheckedChanged);
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cb_craftable);
             this.panel2.Controls.Add(this.cb_isDelete);
-            this.panel2.Controls.Add(this.ckDaXoa);
             this.panel2.Controls.Add(this.btn_search);
             this.panel2.Controls.Add(this.txt_search);
-            this.panel2.Controls.Add(this.ckIsdelete);
-            this.panel2.Location = new System.Drawing.Point(-1, 2);
+            this.panel2.Location = new System.Drawing.Point(3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1062, 59);
+            this.panel2.Size = new System.Drawing.Size(1057, 59);
             this.panel2.TabIndex = 15;
+            // 
+            // cb_craftable
+            // 
+            this.cb_craftable.AutoSize = true;
+            this.cb_craftable.Location = new System.Drawing.Point(401, 21);
+            this.cb_craftable.Name = "cb_craftable";
+            this.cb_craftable.Size = new System.Drawing.Size(124, 20);
+            this.cb_craftable.TabIndex = 8;
+            this.cb_craftable.Text = "Đã có công thức";
+            this.cb_craftable.UseVisualStyleBackColor = true;
+            this.cb_craftable.CheckedChanged += new System.EventHandler(this.cb_craftable_CheckedChanged);
             // 
             // cb_isDelete
             // 
@@ -215,6 +204,7 @@
             this.btn_search.TabIndex = 5;
             this.btn_search.Text = "Tìm kiếm";
             this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // txt_search
             // 
@@ -226,6 +216,8 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.btn_editRecipe);
+            this.panel3.Controls.Add(this.btn_addRecipe);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.btn_clear);
             this.panel3.Controls.Add(this.btnMoBan);
@@ -244,6 +236,26 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1059, 285);
             this.panel3.TabIndex = 16;
+            // 
+            // btn_editRecipe
+            // 
+            this.btn_editRecipe.Location = new System.Drawing.Point(516, 157);
+            this.btn_editRecipe.Name = "btn_editRecipe";
+            this.btn_editRecipe.Size = new System.Drawing.Size(147, 30);
+            this.btn_editRecipe.TabIndex = 76;
+            this.btn_editRecipe.Text = "Sửa công thức";
+            this.btn_editRecipe.UseVisualStyleBackColor = true;
+            this.btn_editRecipe.Click += new System.EventHandler(this.btn_editRecipe_Click);
+            // 
+            // btn_addRecipe
+            // 
+            this.btn_addRecipe.Location = new System.Drawing.Point(171, 157);
+            this.btn_addRecipe.Name = "btn_addRecipe";
+            this.btn_addRecipe.Size = new System.Drawing.Size(147, 30);
+            this.btn_addRecipe.TabIndex = 75;
+            this.btn_addRecipe.Text = "Thêm công thức";
+            this.btn_addRecipe.UseVisualStyleBackColor = true;
+            this.btn_addRecipe.Click += new System.EventHandler(this.btn_addRecipe_Click);
             // 
             // pictureBox1
             // 
@@ -306,12 +318,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtGia;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox ckIsdelete;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnMoBan;
-        private System.Windows.Forms.CheckBox ckDaXoa;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox cb_isDelete;
         private System.Windows.Forms.Button btn_search;
@@ -320,5 +330,8 @@
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.CheckBox cb_craftable;
+        private System.Windows.Forms.Button btn_editRecipe;
+        private System.Windows.Forms.Button btn_addRecipe;
     }
 }

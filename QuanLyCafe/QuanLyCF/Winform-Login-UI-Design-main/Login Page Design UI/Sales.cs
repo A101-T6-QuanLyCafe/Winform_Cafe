@@ -43,7 +43,7 @@ namespace Login_Page_Design_UI
         private void LoadCboProduct(int id)
         {
             //lấy dữ liệu về sản phẩm và đẩy lên combobox sản phẩm 
-            List<Product> products = ProductsBLL.GetProductByTypeID(id);
+            List<Product> products = ProductsBLL.GetProductByTypeID(id).Where(x => x.Craftable == 1).ToList();
             cbo_product.DataSource = products;
             cbo_product.DisplayMember = "ProductName";
             cbo_product.ValueMember = "ProductID";
@@ -149,6 +149,13 @@ namespace Login_Page_Design_UI
             newODT.ProductID = int.Parse(cbo_product.SelectedValue.ToString());
             newODT.Quantity = int.Parse(nud_quantity.Value.ToString());
             newODT.Price = ProductsBLL.GetPrice(newODT.ProductID);
+
+            // thực hiện tính toán nguyên liệu có đủ để tạo ra sản phẩm hay không nếu không thông báo không đủ nguyên liệu và hủy bỏ tác vụ
+            if(!ProductsBLL.Craftable(newODT.ProductID, newODT.Quantity))
+            {
+                MessageBox.Show("Nguyên liệu không đủ xin vui lòng chọn món khác");
+                return;
+            }
             //xửa lý việc thêm hoặc chi tiết hóa đơn 
             // cập nhật thành tiền 
             // hiển thị chi tiết hóa đơn lên datagridview

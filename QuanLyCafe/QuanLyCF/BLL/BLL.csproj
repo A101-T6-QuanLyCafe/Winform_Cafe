@@ -65,6 +65,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RecipeBLL.cs" />
+    <Compile Include="RecipeInfoBLL.cs" />
     <Compile Include="SupplierBLL.cs" />
     <Compile Include="TableBLL.cs" />
     <Compile Include="TypeMaterialsBLL.cs" />

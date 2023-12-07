@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,6 +115,47 @@ namespace BLL
         {
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             return DB.Products.FirstOrDefault(x => x.ProductID == productID);
+        }
+
+        public static void SetCraftable(int productID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            DB.Products.FirstOrDefault(x => x.ProductID == productID).Craftable = 1;
+            DB.SubmitChanges();
+        }
+
+        public static List<Product> GetByFillter(string text, bool checked1, bool checked2)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            var rs = DB.Products.Where(x => x.ProductName.Contains(text));
+            if (checked1 == true)
+                rs = rs.Where(x => x.ISDELETE == 1);
+            else
+                rs = rs.Where(x => x.ISDELETE == 0);
+            if (checked2 == true)
+                rs = rs.Where(x => x.Craftable == 1);
+            else
+                rs = rs.Where(x => x.Craftable == 0);
+            return rs.ToList();
+        }
+
+        public static Boolean Craftable(int productID, int quantity)
+        {
+            Recipe rc = RecipeBLL.GetRecipe(productID);
+            List<RecipeInfo> list = RecipeInfoBLL.GetByRecipeID(rc.RecipeID);
+            foreach (RecipeInfo item in list)
+            {
+                material mt = MaterialsBLL.GetByID(item.MaterialID);
+                if ((item.Quantity * quantity) > mt.quantity)
+                    return false;
+            }
+
+            foreach (RecipeInfo item in list)
+            {
+                MaterialsBLL.MinusQuantity(item.MaterialID, (item.Quantity * quantity));
+            }
+
+            return true;
         }
         #endregion
     }

@@ -84,7 +84,7 @@ namespace BLL
     #endregion
 		
 		public CoffeeShopDBDataContext() : 
-				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString, mappingSource)
+				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -2665,6 +2665,8 @@ namespace BLL
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
+		private EntitySet<Recipe> _Recipes;
+		
 		private EntityRef<typeProduct> _typeProduct;
 		
     #region Extensibility Method Definitions
@@ -2690,6 +2692,7 @@ namespace BLL
 		public Product()
 		{
 			this._OrderDetails = new EntitySet<OrderDetail>(new Action<OrderDetail>(this.attach_OrderDetails), new Action<OrderDetail>(this.detach_OrderDetails));
+			this._Recipes = new EntitySet<Recipe>(new Action<Recipe>(this.attach_Recipes), new Action<Recipe>(this.detach_Recipes));
 			this._typeProduct = default(EntityRef<typeProduct>);
 			OnCreated();
 		}
@@ -2851,6 +2854,19 @@ namespace BLL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_Recipe", Storage="_Recipes", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<Recipe> Recipes
+		{
+			get
+			{
+				return this._Recipes;
+			}
+			set
+			{
+				this._Recipes.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="typeProduct_Product", Storage="_typeProduct", ThisKey="typeProductID", OtherKey="typeProductID", IsForeignKey=true)]
 		public typeProduct typeProduct
 		{
@@ -2916,6 +2932,18 @@ namespace BLL
 			this.SendPropertyChanging();
 			entity.Product = null;
 		}
+		
+		private void attach_Recipes(Recipe entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_Recipes(Recipe entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Recipe")]
@@ -2930,6 +2958,8 @@ namespace BLL
 		
 		private EntitySet<RecipeInfo> _RecipeInfos;
 		
+		private EntityRef<Product> _Product;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2943,6 +2973,7 @@ namespace BLL
 		public Recipe()
 		{
 			this._RecipeInfos = new EntitySet<RecipeInfo>(new Action<RecipeInfo>(this.attach_RecipeInfos), new Action<RecipeInfo>(this.detach_RecipeInfos));
+			this._Product = default(EntityRef<Product>);
 			OnCreated();
 		}
 		
@@ -2977,6 +3008,10 @@ namespace BLL
 			{
 				if ((this._ProductID != value))
 				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnProductIDChanging(value);
 					this.SendPropertyChanging();
 					this._ProductID = value;
@@ -2996,6 +3031,40 @@ namespace BLL
 			set
 			{
 				this._RecipeInfos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_Recipe", Storage="_Product", ThisKey="ProductID", OtherKey="ProductID", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.Recipes.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.Recipes.Add(this);
+						this._ProductID = value.ProductID;
+					}
+					else
+					{
+						this._ProductID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Product");
+				}
 			}
 		}
 		
@@ -3040,9 +3109,9 @@ namespace BLL
 		
 		private int _RecipeInfoID;
 		
-		private System.Nullable<int> _RecipeID;
+		private int _RecipeID;
 		
-		private System.Nullable<int> _MaterialID;
+		private int _MaterialID;
 		
 		private int _Quantity;
 		
@@ -3056,9 +3125,9 @@ namespace BLL
     partial void OnCreated();
     partial void OnRecipeInfoIDChanging(int value);
     partial void OnRecipeInfoIDChanged();
-    partial void OnRecipeIDChanging(System.Nullable<int> value);
+    partial void OnRecipeIDChanging(int value);
     partial void OnRecipeIDChanged();
-    partial void OnMaterialIDChanging(System.Nullable<int> value);
+    partial void OnMaterialIDChanging(int value);
     partial void OnMaterialIDChanged();
     partial void OnQuantityChanging(int value);
     partial void OnQuantityChanged();
@@ -3091,8 +3160,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipeID", DbType="Int")]
-		public System.Nullable<int> RecipeID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipeID", DbType="Int NOT NULL")]
+		public int RecipeID
 		{
 			get
 			{
@@ -3115,8 +3184,8 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterialID", DbType="Int")]
-		public System.Nullable<int> MaterialID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterialID", DbType="Int NOT NULL")]
+		public int MaterialID
 		{
 			get
 			{
@@ -3186,7 +3255,7 @@ namespace BLL
 					}
 					else
 					{
-						this._MaterialID = default(Nullable<int>);
+						this._MaterialID = default(int);
 					}
 					this.SendPropertyChanged("material");
 				}
@@ -3220,7 +3289,7 @@ namespace BLL
 					}
 					else
 					{
-						this._RecipeID = default(Nullable<int>);
+						this._RecipeID = default(int);
 					}
 					this.SendPropertyChanged("Recipe");
 				}

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CoffeeShopDB" Class="CoffeeShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FMAJ644;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Hoangs\SQLEXPRESS;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.EmployeePermissions" Member="EmployeePermissions">
     <Type Name="EmployeePermission">
       <Column Name="EmployeePermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -123,6 +123,7 @@
       <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Craftable" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductID" OtherKey="ProductID" Type="OrderDetail" />
+      <Association Name="Product_Recipe" Member="Recipes" ThisKey="ProductID" OtherKey="ProductID" Type="Recipe" />
       <Association Name="typeProduct_Product" Member="typeProduct" ThisKey="typeProductID" OtherKey="typeProductID" Type="typeProduct" IsForeignKey="true" />
     </Type>
   </Table>
@@ -131,13 +132,14 @@
       <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Recipe_RecipeInfo" Member="RecipeInfos" ThisKey="RecipeID" OtherKey="RecipeID" Type="RecipeInfo" />
+      <Association Name="Product_Recipe" Member="Product" ThisKey="ProductID" OtherKey="ProductID" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.RecipeInfo" Member="RecipeInfos">
     <Type Name="RecipeInfo">
       <Column Name="RecipeInfoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RecipeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaterialID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecipeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="material_RecipeInfo" Member="material" ThisKey="MaterialID" OtherKey="Materials_ID" Type="material" IsForeignKey="true" />
       <Association Name="Recipe_RecipeInfo" Member="Recipe" ThisKey="RecipeID" OtherKey="RecipeID" Type="Recipe" IsForeignKey="true" />
