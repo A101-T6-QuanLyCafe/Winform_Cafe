@@ -89,7 +89,7 @@ namespace Login_Page_Design_UI
 
         private void bánHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Sales fr = new Sales();
+            Sales fr = new Sales(_employee);
             fr.MdiParent = this;
             fr.Show();
         }

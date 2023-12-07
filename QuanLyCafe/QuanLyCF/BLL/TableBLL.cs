@@ -161,6 +161,12 @@ namespace BLL
             DB.SubmitChanges();
             return error;
         }
+
+        public static tablesT GetByID(int currentTableID)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.tablesTs.FirstOrDefault(x => x.TableID == currentTableID);
+        }
         #endregion
     }
 }

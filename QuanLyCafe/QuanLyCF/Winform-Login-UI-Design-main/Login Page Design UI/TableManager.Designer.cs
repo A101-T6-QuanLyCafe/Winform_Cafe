@@ -48,6 +48,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_tableID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TBName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -107,6 +111,11 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TableID,
+            this.TBName,
+            this.Note,
+            this.status});
             this.dataGridView1.Location = new System.Drawing.Point(3, 331);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -256,6 +265,34 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã bàn";
             // 
+            // TableID
+            // 
+            this.TableID.DataPropertyName = "TableID";
+            this.TableID.HeaderText = "Mã bàn";
+            this.TableID.MinimumWidth = 6;
+            this.TableID.Name = "TableID";
+            // 
+            // TBName
+            // 
+            this.TBName.DataPropertyName = "Name";
+            this.TBName.HeaderText = "Tên bàn";
+            this.TBName.MinimumWidth = 6;
+            this.TBName.Name = "TBName";
+            // 
+            // Note
+            // 
+            this.Note.DataPropertyName = "Note";
+            this.Note.HeaderText = "Ghi chú";
+            this.Note.MinimumWidth = 6;
+            this.Note.Name = "Note";
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Trạng thái";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            // 
             // TableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -297,5 +334,9 @@
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.TextBox txt_search;
         private System.Windows.Forms.CheckBox cb_status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TableID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TBName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Note;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }

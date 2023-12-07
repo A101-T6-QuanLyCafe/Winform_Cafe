@@ -46,6 +46,7 @@
             this.cbo_table = new System.Windows.Forms.ComboBox();
             this.btn_swapTable = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_updateTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_quantity)).BeginInit();
             this.detail_panel.SuspendLayout();
@@ -57,7 +58,7 @@
             this.Table_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Table_panel.Location = new System.Drawing.Point(3, 3);
             this.Table_panel.Name = "Table_panel";
-            this.Table_panel.Size = new System.Drawing.Size(523, 667);
+            this.Table_panel.Size = new System.Drawing.Size(523, 630);
             this.Table_panel.TabIndex = 0;
             // 
             // lb_currentTable
@@ -227,6 +228,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_updateTable);
             this.panel1.Controls.Add(this.detail_panel);
             this.panel1.Controls.Add(this.Table_panel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,6 +236,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1062, 673);
             this.panel1.TabIndex = 1;
+            // 
+            // btn_updateTable
+            // 
+            this.btn_updateTable.Location = new System.Drawing.Point(168, 639);
+            this.btn_updateTable.Name = "btn_updateTable";
+            this.btn_updateTable.Size = new System.Drawing.Size(157, 25);
+            this.btn_updateTable.TabIndex = 24;
+            this.btn_updateTable.Text = "Cập nhật";
+            this.btn_updateTable.UseVisualStyleBackColor = true;
+            this.btn_updateTable.Click += new System.EventHandler(this.btn_updateTable_Click);
             // 
             // Sales
             // 
@@ -273,5 +285,6 @@
         private System.Windows.Forms.Button btn_submit;
         private System.Windows.Forms.ComboBox cbo_table;
         private System.Windows.Forms.Button btn_swapTable;
+        private System.Windows.Forms.Button btn_updateTable;
     }
 }
