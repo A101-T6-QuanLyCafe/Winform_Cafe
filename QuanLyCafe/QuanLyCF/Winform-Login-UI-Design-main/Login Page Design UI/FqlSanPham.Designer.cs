@@ -45,17 +45,21 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtGia = new System.Windows.Forms.NumericUpDown();
             this.btn_editRecipe = new System.Windows.Forms.Button();
             this.btn_addRecipe = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.txtGia = new System.Windows.Forms.NumericUpDown();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSanpham)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cboLoai
@@ -70,6 +74,11 @@
             // 
             this.dtgSanpham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgSanpham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgSanpham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductID,
+            this.ProductName,
+            this.Price,
+            this.typeProductID});
             this.dtgSanpham.Location = new System.Drawing.Point(3, 357);
             this.dtgSanpham.Name = "dtgSanpham";
             this.dtgSanpham.RowHeadersWidth = 51;
@@ -233,6 +242,13 @@
             this.panel3.Size = new System.Drawing.Size(1059, 285);
             this.panel3.TabIndex = 16;
             // 
+            // txtGia
+            // 
+            this.txtGia.Location = new System.Drawing.Point(525, 30);
+            this.txtGia.Name = "txtGia";
+            this.txtGia.Size = new System.Drawing.Size(192, 22);
+            this.txtGia.TabIndex = 77;
+            // 
             // btn_editRecipe
             // 
             this.btn_editRecipe.Location = new System.Drawing.Point(516, 157);
@@ -283,12 +299,33 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // txtGia
+            // ProductID
             // 
-            this.txtGia.Location = new System.Drawing.Point(525, 30);
-            this.txtGia.Name = "txtGia";
-            this.txtGia.Size = new System.Drawing.Size(192, 22);
-            this.txtGia.TabIndex = 77;
+            this.ProductID.DataPropertyName = "ProductID";
+            this.ProductID.HeaderText = "Mã sản phẩm";
+            this.ProductID.MinimumWidth = 6;
+            this.ProductID.Name = "ProductID";
+            // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "Tên sản phẩm";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Giá";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            // 
+            // typeProductID
+            // 
+            this.typeProductID.DataPropertyName = "typeProductName";
+            this.typeProductID.HeaderText = "Loại sản phẩm";
+            this.typeProductID.MinimumWidth = 6;
+            this.typeProductID.Name = "typeProductID";
             // 
             // FqlSanPham
             // 
@@ -306,8 +343,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +374,9 @@
         private System.Windows.Forms.Button btn_editRecipe;
         private System.Windows.Forms.Button btn_addRecipe;
         private System.Windows.Forms.NumericUpDown txtGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeProductID;
     }
 }

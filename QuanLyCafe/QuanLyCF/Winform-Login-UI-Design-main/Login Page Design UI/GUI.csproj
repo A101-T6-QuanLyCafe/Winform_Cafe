@@ -128,6 +128,12 @@
     <Compile Include="TableManager.Designer.cs">
       <DependentUpon>TableManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="TypeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TypeManager.Designer.cs">
+      <DependentUpon>TypeManager.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddRecipe.resx">
       <DependentUpon>AddRecipe.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TableManager.resx">
       <DependentUpon>TableManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeManager.resx">
+      <DependentUpon>TypeManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -30,12 +30,12 @@ namespace BLL
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertEmployeePermission(EmployeePermission instance);
-    partial void UpdateEmployeePermission(EmployeePermission instance);
-    partial void DeleteEmployeePermission(EmployeePermission instance);
     partial void InserttypeProduct(typeProduct instance);
     partial void UpdatetypeProduct(typeProduct instance);
     partial void DeletetypeProduct(typeProduct instance);
+    partial void InsertEmployeePermission(EmployeePermission instance);
+    partial void UpdateEmployeePermission(EmployeePermission instance);
+    partial void DeleteEmployeePermission(EmployeePermission instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
@@ -84,7 +84,7 @@ namespace BLL
     #endregion
 		
 		public CoffeeShopDBDataContext() : 
-				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString, mappingSource)
+				base(global::BLL.Properties.Settings.Default.CoffeeShopDBConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -113,19 +113,19 @@ namespace BLL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<EmployeePermission> EmployeePermissions
-		{
-			get
-			{
-				return this.GetTable<EmployeePermission>();
-			}
-		}
-		
 		public System.Data.Linq.Table<typeProduct> typeProducts
 		{
 			get
 			{
 				return this.GetTable<typeProduct>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EmployeePermission> EmployeePermissions
+		{
+			get
+			{
+				return this.GetTable<EmployeePermission>();
 			}
 		}
 		
@@ -247,6 +247,120 @@ namespace BLL
 			{
 				return this.GetTable<TypeMaterial>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.typeProduct")]
+	public partial class typeProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _typeProductID;
+		
+		private string _typeProductName;
+		
+		private EntitySet<Product> _Products;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OntypeProductIDChanging(int value);
+    partial void OntypeProductIDChanged();
+    partial void OntypeProductNameChanging(string value);
+    partial void OntypeProductNameChanged();
+    #endregion
+		
+		public typeProduct()
+		{
+			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int typeProductID
+		{
+			get
+			{
+				return this._typeProductID;
+			}
+			set
+			{
+				if ((this._typeProductID != value))
+				{
+					this.OntypeProductIDChanging(value);
+					this.SendPropertyChanging();
+					this._typeProductID = value;
+					this.SendPropertyChanged("typeProductID");
+					this.OntypeProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string typeProductName
+		{
+			get
+			{
+				return this._typeProductName;
+			}
+			set
+			{
+				if ((this._typeProductName != value))
+				{
+					this.OntypeProductNameChanging(value);
+					this.SendPropertyChanging();
+					this._typeProductName = value;
+					this.SendPropertyChanged("typeProductName");
+					this.OntypeProductNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="typeProduct_Product", Storage="_Products", ThisKey="typeProductID", OtherKey="typeProductID")]
+		public EntitySet<Product> Products
+		{
+			get
+			{
+				return this._Products;
+			}
+			set
+			{
+				this._Products.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.typeProduct = this;
+		}
+		
+		private void detach_Products(Product entity)
+		{
+			this.SendPropertyChanging();
+			entity.typeProduct = null;
 		}
 	}
 	
@@ -439,120 +553,6 @@ namespace BLL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.typeProduct")]
-	public partial class typeProduct : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _typeProductID;
-		
-		private string _typeProductName;
-		
-		private EntitySet<Product> _Products;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OntypeProductIDChanging(int value);
-    partial void OntypeProductIDChanged();
-    partial void OntypeProductNameChanging(string value);
-    partial void OntypeProductNameChanged();
-    #endregion
-		
-		public typeProduct()
-		{
-			this._Products = new EntitySet<Product>(new Action<Product>(this.attach_Products), new Action<Product>(this.detach_Products));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int typeProductID
-		{
-			get
-			{
-				return this._typeProductID;
-			}
-			set
-			{
-				if ((this._typeProductID != value))
-				{
-					this.OntypeProductIDChanging(value);
-					this.SendPropertyChanging();
-					this._typeProductID = value;
-					this.SendPropertyChanged("typeProductID");
-					this.OntypeProductIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_typeProductName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string typeProductName
-		{
-			get
-			{
-				return this._typeProductName;
-			}
-			set
-			{
-				if ((this._typeProductName != value))
-				{
-					this.OntypeProductNameChanging(value);
-					this.SendPropertyChanging();
-					this._typeProductName = value;
-					this.SendPropertyChanged("typeProductName");
-					this.OntypeProductNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="typeProduct_Product", Storage="_Products", ThisKey="typeProductID", OtherKey="typeProductID")]
-		public EntitySet<Product> Products
-		{
-			get
-			{
-				return this._Products;
-			}
-			set
-			{
-				this._Products.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Products(Product entity)
-		{
-			this.SendPropertyChanging();
-			entity.typeProduct = this;
-		}
-		
-		private void detach_Products(Product entity)
-		{
-			this.SendPropertyChanging();
-			entity.typeProduct = null;
 		}
 	}
 	

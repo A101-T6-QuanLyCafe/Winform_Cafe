@@ -54,6 +54,7 @@
             // 
             // dtgPN
             // 
+            this.dtgPN.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgPN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgPN.Location = new System.Drawing.Point(3, 331);
             this.dtgPN.Name = "dtgPN";

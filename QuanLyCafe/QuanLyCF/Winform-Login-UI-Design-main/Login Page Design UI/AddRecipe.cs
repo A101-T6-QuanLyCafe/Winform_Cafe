@@ -21,6 +21,7 @@ namespace Login_Page_Design_UI
         public AddRecipe(Product _pd, string transaction)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
             this.pd = _pd;
             this.transaction=transaction;
         }
@@ -48,7 +49,7 @@ namespace Login_Page_Design_UI
 
         private void loadMaterialDatagridview()
         {
-            dtgv_material.DataSource  = MaterialsBLL.GetAll().Select(x => new { x.Materials_ID, x.Materials_Name, x.Unit }).ToList() ;
+            dtgv_material.DataSource  = MaterialsBLL.GetAll().Where(x => x.ISDELETE == 0).Select(x => new { x.Materials_ID, x.Materials_Name, x.Unit }).ToList() ;
         }
 
        

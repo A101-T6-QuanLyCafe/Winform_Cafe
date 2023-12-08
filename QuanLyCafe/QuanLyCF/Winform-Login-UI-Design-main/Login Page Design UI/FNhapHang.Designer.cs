@@ -68,6 +68,7 @@
             // 
             this.dtg_NguyenLieu.AllowUserToAddRows = false;
             this.dtg_NguyenLieu.AllowUserToDeleteRows = false;
+            this.dtg_NguyenLieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_NguyenLieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_NguyenLieu.Location = new System.Drawing.Point(0, 2);
             this.dtg_NguyenLieu.Name = "dtg_NguyenLieu";

@@ -182,3 +182,4 @@ F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login P
 F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\GUI.csproj.CopyComplete
 F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login Page Design UI.exe
 F:\doAnungDungThongMinh\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login Page Design UI.pdb
+C:\Users\tamtr\Documents\GitHub\Winform_Cafe\QuanLyCafe\QuanLyCF\Winform-Login-UI-Design-main\Login Page Design UI\obj\Debug\Login_Page_Design_UI.TypeManager.resources

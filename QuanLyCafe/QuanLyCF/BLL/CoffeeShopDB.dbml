@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CoffeeShopDB" Class="CoffeeShopDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-FMAJ644;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Hoangs\SQLEXPRESS;Initial Catalog=CoffeeShopDB;Integrated Security=True" SettingsObjectName="BLL.Properties.Settings" SettingsPropertyName="CoffeeShopDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.typeProduct" Member="typeProducts">
+    <Type Name="typeProduct">
+      <Column Name="typeProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typeProductName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="typeProduct_Product" Member="Products" ThisKey="typeProductID" OtherKey="typeProductID" Type="Product" />
+    </Type>
+  </Table>
   <Table Name="dbo.EmployeePermissions" Member="EmployeePermissions">
     <Type Name="EmployeePermission">
       <Column Name="EmployeePermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,13 +14,6 @@
       <Column Name="PermissionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Employee_EmployeePermission" Member="Employee" ThisKey="EmployeeID" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
       <Association Name="Permission_EmployeePermission" Member="Permission" ThisKey="PermissionID" OtherKey="PermissionID" Type="Permission" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.typeProduct" Member="typeProducts">
-    <Type Name="typeProduct">
-      <Column Name="typeProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="typeProductName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Association Name="typeProduct_Product" Member="Products" ThisKey="typeProductID" OtherKey="typeProductID" Type="Product" />
     </Type>
   </Table>
   <Table Name="dbo.Employees" Member="Employees">

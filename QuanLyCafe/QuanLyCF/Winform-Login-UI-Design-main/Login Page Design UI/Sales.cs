@@ -265,5 +265,10 @@ namespace Login_Page_Design_UI
         {
             LoadAllTable();
         }
+
+        private void cbo_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

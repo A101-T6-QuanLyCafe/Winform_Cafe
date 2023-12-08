@@ -47,6 +47,8 @@
             this.btn_swapTable = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_updateTable = new System.Windows.Forms.Button();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_quantity)).BeginInit();
             this.detail_panel.SuspendLayout();
@@ -75,6 +77,9 @@
             // 
             this.dtgv_orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_orders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductName,
+            this.Quantity});
             this.dtgv_orders.Location = new System.Drawing.Point(3, 166);
             this.dtgv_orders.Name = "dtgv_orders";
             this.dtgv_orders.RowHeadersWidth = 51;
@@ -137,6 +142,7 @@
             this.cbo_type.Name = "cbo_type";
             this.cbo_type.Size = new System.Drawing.Size(209, 24);
             this.cbo_type.TabIndex = 0;
+            this.cbo_type.SelectedIndexChanged += new System.EventHandler(this.cbo_type_SelectedIndexChanged);
             this.cbo_type.SelectionChangeCommitted += new System.EventHandler(this.cbo_type_SelectionChangeCommitted);
             // 
             // detail_panel
@@ -247,6 +253,20 @@
             this.btn_updateTable.UseVisualStyleBackColor = true;
             this.btn_updateTable.Click += new System.EventHandler(this.btn_updateTable_Click);
             // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "Tên sản phẩm";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Số lượng";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -286,5 +306,7 @@
         private System.Windows.Forms.ComboBox cbo_table;
         private System.Windows.Forms.Button btn_swapTable;
         private System.Windows.Forms.Button btn_updateTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
     }
 }

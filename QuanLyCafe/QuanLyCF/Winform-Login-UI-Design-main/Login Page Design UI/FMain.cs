@@ -54,10 +54,6 @@ namespace Login_Page_Design_UI
             fr.Show();
         }
 
-        private void quảnLíLoạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void quảnLíSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -92,6 +88,13 @@ namespace Login_Page_Design_UI
             Sales fr = new Sales(_employee);
             fr.MdiParent = this;
             fr.Show();
+        }
+
+        private void quảnLýLoạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TypeManager typeManager = new TypeManager();
+            typeManager.MdiParent = this;
+            typeManager.Show();
         }
     }
 }

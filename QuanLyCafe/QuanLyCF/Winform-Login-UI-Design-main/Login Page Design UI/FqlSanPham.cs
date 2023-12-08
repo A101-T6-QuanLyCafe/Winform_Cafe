@@ -25,7 +25,7 @@ namespace Login_Page_Design_UI
 
         public void LoadProduct()
         {
-            dtgSanpham.DataSource = ProductsBLL.GetByFillter(txt_search.Text, cb_isDelete.Checked, cb_craftable.Checked).Select(x => new { x.ProductID, x.ProductName, x.Price, x.typeProductID }).ToList();
+            dtgSanpham.DataSource = ProductsBLL.GetByFillter(txt_search.Text, cb_isDelete.Checked, cb_craftable.Checked).Select(x => new { x.ProductID, x.ProductName, x.Price, x.typeProduct.typeProductName }).ToList();
         }
         public void loadcbo()
         {

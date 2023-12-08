@@ -60,6 +60,50 @@ namespace BLL
             CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
             return DB.typeProducts.Where(x => true).ToList();
         }
+
+        public static Boolean Add(typeProduct pd)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            if(IsExists(pd.typeProductName))
+            {
+                return false;
+            }
+            DB.typeProducts.InsertOnSubmit(pd);
+            DB.SubmitChanges();
+            return true;
+        }
+
+        public static Boolean IsExists(String name)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            return DB.typeProducts.Any(x => x.typeProductName == name);
+        }
+
+        public static Boolean Edit(typeProduct tp)
+        {
+            CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+            typeProduct pd = DB.typeProducts.FirstOrDefault(x => x.typeProductID == tp.typeProductID);
+            pd.typeProductName = tp.typeProductName;
+            DB.SubmitChanges();
+            return true;
+        }
+
+        public static Boolean Remove(int v)
+        {
+            try
+            {
+                CoffeeShopDBDataContext DB = new CoffeeShopDBDataContext();
+                typeProduct pd = DB.typeProducts.FirstOrDefault(x => x.typeProductID == v);
+                DB.typeProducts.DeleteOnSubmit(pd);
+                DB.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
         #endregion
     }
 }
